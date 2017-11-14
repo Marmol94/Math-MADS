@@ -1,0 +1,10 @@
+G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.csprojResolveAssemblyReference.cache
+G:\Projekty\Math MADS\Math MADS\obj\Debug\Math_MADS.Gra.resources
+G:\Projekty\Math MADS\Math MADS\obj\Debug\Math_MADS.Properties.Resources.resources
+G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.csproj.GenerateResource.Cache
+G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.csproj.CoreCompileInputs.cache
+G:\Projekty\Math MADS\Math MADS\bin\Debug\Math MADS.exe.config
+G:\Projekty\Math MADS\Math MADS\bin\Debug\Math MADS.exe
+G:\Projekty\Math MADS\Math MADS\bin\Debug\Math MADS.pdb
+G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.exe
+G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.pdb
