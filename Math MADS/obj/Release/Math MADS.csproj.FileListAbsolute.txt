@@ -1,0 +1,10 @@
+C:\Projekt\Math MADS\Math MADS\bin\Release\Math MADS.exe.config
+C:\Projekt\Math MADS\Math MADS\bin\Release\Math MADS.exe
+C:\Projekt\Math MADS\Math MADS\bin\Release\Math MADS.pdb
+C:\Projekt\Math MADS\Math MADS\obj\Release\Math MADS.csprojResolveAssemblyReference.cache
+C:\Projekt\Math MADS\Math MADS\obj\Release\Math_MADS.Gra.resources
+C:\Projekt\Math MADS\Math MADS\obj\Release\Math_MADS.Properties.Resources.resources
+C:\Projekt\Math MADS\Math MADS\obj\Release\Math MADS.csproj.GenerateResource.Cache
+C:\Projekt\Math MADS\Math MADS\obj\Release\Math MADS.csproj.CoreCompileInputs.cache
+C:\Projekt\Math MADS\Math MADS\obj\Release\Math MADS.exe
+C:\Projekt\Math MADS\Math MADS\obj\Release\Math MADS.pdb

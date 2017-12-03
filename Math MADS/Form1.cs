@@ -11,18 +11,107 @@ using System.Windows.Forms;
 
 namespace Math_MADS
 {
-  
+
     public partial class Gra : Form
     {
-        bool prawo, lewo, skok, spadek ;
-        bool spadanie=true;
-        int force;
-        int G =30;
-        int mforce;
+        
+        public bool prawo, lewo, skok, wcis;
+        bool spadanie;
+        public int force;
+        const int G = 35;
+        public int mforce;
+        Collision kolizja = new Collision();
+        
 
-        public void collision(PictureBox P, PictureBox G, bool s)
+        public Gra()
+        {
+            InitializeComponent();
+            mforce = 0;
+            force = G;
+              
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            
+
+            if (skok && spadanie)
+            {
+                Gracz.Top -= force;
+                if (wcis && mforce < force) force += 1;
+            }
+
+            if (Gracz.Top + Gracz.Height >= screen.Height - 5)
+            {
+                Gracz.Top = screen.Height - Gracz.Height - 5;
+                skok = false;
+                spadanie = false;
+                mforce = 15;
+                force = G;
+
+            }
+            else if (kolizja.Top(Platform2, Gracz))
+            {
+                skok = false;
+                spadanie = false;
+                mforce = 15;
+                force = G;
+                if (!wcis) Gracz.Top = Platform2.Top - Gracz.Height;
+            }
+            else if (kolizja.Top(Platform, Gracz))
+            {
+                skok = false;
+                spadanie = false;
+                mforce = 15;
+                force = G
+                    ;
+                if (!wcis) Gracz.Top = Platform.Top - Gracz.Height;
+            }
+            else if (kolizja.Bot(Platform, Gracz))
+            {
+                force = 0;
+                Gracz.Top += mforce;
+            }
+            else if(!kolizja.Top(Platform, Gracz))
+            {
+                Gracz.Top += mforce;
+                mforce = mforce + 2;
+            }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            
+            if (prawo == true)
+            {
+                if (Gracz.Right < screen.Right && kolizja.Right(Platform2, Gracz)) Gracz.Left += 2;
+                Gracz.Image = Math_MADS.Properties.Resources.prawo;
+            }
+            else if (lewo == true)
+            {
+                if(Gracz.Left> screen.Left && kolizja.Left(Platform2, Gracz)) Gracz.Left -= 2;
+                Gracz.Image = Math_MADS.Properties.Resources.lewo;
+            }
+            else
+            {
+                Gracz.Image = Math_MADS.Properties.Resources.przod;
+
+            }
+            label1.Text = Convert.ToString(skok);
+            label2.Text = Convert.ToString(force);
+            label3.Text = Convert.ToString(mforce);
+            label4.Text = Convert.ToString(spadanie);
+            label9.Text = Convert.ToString(Gracz.SizeMode);
+            label13.Text = Convert.ToString(Gracz.Left);
+            label12.Text = Convert.ToString(Gracz.Top);
+
+        }
+
+        public void Side(PictureBox P, PictureBox G)
         {
             int x1, x2, x3, x4, y1, y2, y3, y4, w, h1, h2;
+
             x1 = P.Right;
             x2 = P.Left;
             y1 = P.Top;
@@ -31,106 +120,55 @@ namespace Math_MADS
             x3 = G.Right;
             x4 = G.Left;
             y3 = G.Top;
-            //y4 = G.Bottom;
+            y4 = G.Bottom;
 
             //w = P.Width;
             h1 = P.Height;
             h2 = G.Height;
-            if (x4 <= x1 && x4>=x2 && (y3 <= y1+h1 && y3+h2 >= y1))
+            if ((x4 <= x1 && x4 >= x2 && (y3 <= y1 + h1 + 5 && y3 + h2 >= y1 + 5)))
             {
-
+                G.BackColor = Color.Red;
                 lewo = false;
-                if(y3-h2<=y1)
-                {
-                    s = true;
-                    y3 = y1-h2;
-                }
+
             }
 
-            if (x3 >= x2 && x3<=x1 && (y3 <= y1+h1 && y3+h2 >= y1))
+            if (x3 >= x2 && x3 <= x1 && (y3 <= y1 + h1 + 5 && y3 + h2 >= y1 + 5))
+            {
+
                 prawo = false;
 
-            //while (x1 <= x3 + w / 2 && x1 >= x3 + w / 2)
-              //  lewo = false;
-
-          //  while (x1 <= x3 + w / 2 && x1 >= x3 + w / 2)
-            //    lewo = false;
-        }
-    
-        public Gra()
-        {
-            InitializeComponent();
-        }
-
-        private void timer2_Tick(object sender, EventArgs e)
-        {
-            collision(Platform, Gracz, spadek);
-
-            if (skok  && spadanie )
-            {
-
-                
-                    Gracz.Top -= force;
-                
-                force +=1;
- 
-                 
-                }
-            
-            if (Gracz.Top + Gracz.Height >= screen.Height&&!spadek)
-            {
-                Gracz.Top = screen.Height - Gracz.Height;
-                skok = false;
-                spadanie = false;
-
-            }
-            else if(!spadek)
-            {
-                Gracz.Top += mforce;
-                mforce = mforce+3;
-
             }
 
-      
-        }
-
-        private void timer1_Tick(object sender, EventArgs e)
-        {
-            collision(Platform, Gracz, spadek);
-
-            if (prawo == true) { Gracz.Left += 1; }
-            if (lewo == true) { Gracz.Left -= 1; }
-
-            
 
         }
-
-
         private void Gra_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Right) {
+            
+            if (e.KeyCode == Keys.Right)
+            {
                 prawo = true;
-                collision(Platform, Gracz, spadek);
-                 
+
+    
             }
-            if (e.KeyCode == Keys.Left) {
+            if (e.KeyCode == Keys.Left)
+            {
                 lewo = true;
-                collision(Platform, Gracz, spadek);
-                 
+
+    
+
             }
             if (e.KeyCode == Keys.Escape) { this.Close(); }
-            if (!skok )
+            if (!skok)
             {
 
-                if ((e.KeyCode == Keys.Space && (!spadanie == true))) 
+                if (e.KeyCode == Keys.Space)
                 {
-                    //collision(Platform, Gracz);
 
                     spadanie = true;
                     skok = true;
-                    force = G;
-                      
-                    mforce = 1;
+                    //force = G;
+                    wcis = true;
+
 
                 }
             }
@@ -138,19 +176,20 @@ namespace Math_MADS
 
         private void Gra_KeyUp(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Right) {
+            
+            if (e.KeyCode == Keys.Right)
+            {
                 prawo = false;
-                collision(Platform, Gracz,spadek);
-                 
             }
-            if (e.KeyCode == Keys.Left) {
+            if (e.KeyCode == Keys.Left)
+            {
                 lewo = false;
-                collision(Platform, Gracz, spadek);
-                
+
             }
-            if (e.KeyCode == Keys.Space) {
-                skok = false; mforce = 1;
-                collision(Platform, Gracz,spadek);
+            if (e.KeyCode == Keys.Space)
+            {
+                //skok = false;
+                wcis = false;
             }
 
         }

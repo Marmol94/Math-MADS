@@ -8,3 +8,23 @@ G:\Projekty\Math MADS\Math MADS\bin\Debug\Math MADS.exe
 G:\Projekty\Math MADS\Math MADS\bin\Debug\Math MADS.pdb
 G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.exe
 G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.pdb
+C:\Projekt\Math MADS\Math MADS\bin\Debug\Math MADS.exe.config
+C:\Projekt\Math MADS\Math MADS\bin\Debug\Math MADS.exe
+C:\Projekt\Math MADS\Math MADS\bin\Debug\Math MADS.pdb
+C:\Projekt\Math MADS\Math MADS\obj\Debug\Math MADS.csprojResolveAssemblyReference.cache
+C:\Projekt\Math MADS\Math MADS\obj\Debug\Math_MADS.Gra.resources
+C:\Projekt\Math MADS\Math MADS\obj\Debug\Math_MADS.Properties.Resources.resources
+C:\Projekt\Math MADS\Math MADS\obj\Debug\Math MADS.csproj.GenerateResource.Cache
+C:\Projekt\Math MADS\Math MADS\obj\Debug\Math MADS.csproj.CoreCompileInputs.cache
+C:\Projekt\Math MADS\Math MADS\obj\Debug\Math MADS.exe
+C:\Projekt\Math MADS\Math MADS\obj\Debug\Math MADS.pdb
+G:\Games\Projekt\Math MADS\Math MADS\bin\Debug\Math MADS.exe.config
+G:\Games\Projekt\Math MADS\Math MADS\bin\Debug\Math MADS.exe
+G:\Games\Projekt\Math MADS\Math MADS\bin\Debug\Math MADS.pdb
+G:\Games\Projekt\Math MADS\Math MADS\obj\Debug\Math MADS.csprojResolveAssemblyReference.cache
+G:\Games\Projekt\Math MADS\Math MADS\obj\Debug\Math_MADS.Gra.resources
+G:\Games\Projekt\Math MADS\Math MADS\obj\Debug\Math_MADS.Properties.Resources.resources
+G:\Games\Projekt\Math MADS\Math MADS\obj\Debug\Math MADS.csproj.GenerateResource.Cache
+G:\Games\Projekt\Math MADS\Math MADS\obj\Debug\Math MADS.csproj.CoreCompileInputs.cache
+G:\Games\Projekt\Math MADS\Math MADS\obj\Debug\Math MADS.exe
+G:\Games\Projekt\Math MADS\Math MADS\obj\Debug\Math MADS.pdb
