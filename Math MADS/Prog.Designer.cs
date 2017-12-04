@@ -3,7 +3,7 @@
 
 namespace Math_MADS
 {
-    partial class Gra
+    partial class Prog
     {
 
         /// <summary>
@@ -43,7 +43,12 @@ namespace Math_MADS
             this.components = new System.ComponentModel.Container();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
-            this.screen = new System.Windows.Forms.Panel();
+            this.menu = new System.Windows.Forms.Panel();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.Wybor2 = new System.Windows.Forms.PictureBox();
+            this.Wybor1 = new System.Windows.Forms.PictureBox();
+            this.Level1 = new System.Windows.Forms.Panel();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.Platform2 = new System.Windows.Forms.PictureBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -61,7 +66,10 @@ namespace Math_MADS
             this.label1 = new System.Windows.Forms.Label();
             this.Platform = new System.Windows.Forms.PictureBox();
             this.Gracz = new System.Windows.Forms.PictureBox();
-            this.screen.SuspendLayout();
+            this.menu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Wybor2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Wybor1)).BeginInit();
+            this.Level1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Platform2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Platform)).BeginInit();
@@ -80,33 +88,87 @@ namespace Math_MADS
             this.timer2.Interval = 1;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
-            // screen
+            // menu
             // 
-            this.screen.BackColor = System.Drawing.SystemColors.ActiveCaption;
-            this.screen.BackgroundImage = global::Math_MADS.Properties.Resources.blue_spiral_galaxy_wallpaper_1024x768;
-            this.screen.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.screen.Controls.Add(this.pictureBox1);
-            this.screen.Controls.Add(this.Platform2);
-            this.screen.Controls.Add(this.label13);
-            this.screen.Controls.Add(this.label12);
-            this.screen.Controls.Add(this.label11);
-            this.screen.Controls.Add(this.label10);
-            this.screen.Controls.Add(this.label9);
-            this.screen.Controls.Add(this.label8);
-            this.screen.Controls.Add(this.label7);
-            this.screen.Controls.Add(this.label6);
-            this.screen.Controls.Add(this.label5);
-            this.screen.Controls.Add(this.label4);
-            this.screen.Controls.Add(this.label3);
-            this.screen.Controls.Add(this.label2);
-            this.screen.Controls.Add(this.label1);
-            this.screen.Controls.Add(this.Platform);
-            this.screen.Controls.Add(this.Gracz);
-            this.screen.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.screen.Location = new System.Drawing.Point(0, 0);
-            this.screen.Name = "screen";
-            this.screen.Size = new System.Drawing.Size(1006, 721);
-            this.screen.TabIndex = 0;
+            this.menu.BackColor = System.Drawing.Color.White;
+            this.menu.Controls.Add(this.label15);
+            this.menu.Controls.Add(this.label14);
+            this.menu.Controls.Add(this.Wybor2);
+            this.menu.Controls.Add(this.Wybor1);
+            this.menu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.menu.ForeColor = System.Drawing.Color.Black;
+            this.menu.Location = new System.Drawing.Point(0, 0);
+            this.menu.Name = "menu";
+            this.menu.Size = new System.Drawing.Size(1006, 721);
+            this.menu.TabIndex = 17;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Ravie", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(411, 319);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(164, 44);
+            this.label15.TabIndex = 5;
+            this.label15.Text = "Koniec";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Ravie", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(411, 157);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(152, 44);
+            this.label14.TabIndex = 4;
+            this.label14.Text = "Start";
+            // 
+            // Wybor2
+            // 
+            this.Wybor2.Image = global::Math_MADS.Properties.Resources.arrow_hi;
+            this.Wybor2.Location = new System.Drawing.Point(301, 319);
+            this.Wybor2.Name = "Wybor2";
+            this.Wybor2.Size = new System.Drawing.Size(46, 50);
+            this.Wybor2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Wybor2.TabIndex = 3;
+            this.Wybor2.TabStop = false;
+            this.Wybor2.Visible = false;
+            // 
+            // Wybor1
+            // 
+            this.Wybor1.Image = global::Math_MADS.Properties.Resources.arrow_hi;
+            this.Wybor1.Location = new System.Drawing.Point(301, 157);
+            this.Wybor1.Name = "Wybor1";
+            this.Wybor1.Size = new System.Drawing.Size(46, 50);
+            this.Wybor1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.Wybor1.TabIndex = 2;
+            this.Wybor1.TabStop = false;
+            // 
+            // Level1
+            // 
+            this.Level1.BackColor = System.Drawing.Color.DimGray;
+            this.Level1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Level1.Controls.Add(this.pictureBox1);
+            this.Level1.Controls.Add(this.Platform2);
+            this.Level1.Controls.Add(this.label13);
+            this.Level1.Controls.Add(this.label12);
+            this.Level1.Controls.Add(this.label11);
+            this.Level1.Controls.Add(this.label10);
+            this.Level1.Controls.Add(this.label9);
+            this.Level1.Controls.Add(this.label8);
+            this.Level1.Controls.Add(this.label7);
+            this.Level1.Controls.Add(this.label6);
+            this.Level1.Controls.Add(this.label5);
+            this.Level1.Controls.Add(this.label4);
+            this.Level1.Controls.Add(this.label3);
+            this.Level1.Controls.Add(this.label2);
+            this.Level1.Controls.Add(this.label1);
+            this.Level1.Controls.Add(this.Platform);
+            this.Level1.Controls.Add(this.Gracz);
+            this.Level1.ForeColor = System.Drawing.Color.Transparent;
+            this.Level1.Location = new System.Drawing.Point(3, 0);
+            this.Level1.Name = "Level1";
+            this.Level1.Size = new System.Drawing.Size(1006, 721);
+            this.Level1.TabIndex = 0;
             // 
             // pictureBox1
             // 
@@ -260,21 +322,29 @@ namespace Math_MADS
             this.Gracz.Location = new System.Drawing.Point(280, 437);
             this.Gracz.Name = "Gracz";
             this.Gracz.Size = new System.Drawing.Size(37, 77);
+            this.Gracz.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Gracz.TabIndex = 0;
             this.Gracz.TabStop = false;
             // 
-            // Gra
+            // Prog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(1006, 721);
-            this.Controls.Add(this.screen);
-            this.Name = "Gra";
+            this.Controls.Add(this.Level1);
+            this.Controls.Add(this.menu);
+            this.DoubleBuffered = true;
+            this.Name = "Prog";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Gra_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Gra_KeyUp);
-            this.screen.ResumeLayout(false);
-            this.screen.PerformLayout();
+            this.menu.ResumeLayout(false);
+            this.menu.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Wybor2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Wybor1)).EndInit();
+            this.Level1.ResumeLayout(false);
+            this.Level1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Platform2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Platform)).EndInit();
@@ -284,28 +354,32 @@ namespace Math_MADS
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel screen;
-        private System.Windows.Forms.PictureBox Gracz;
         private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.PictureBox Platform;
         private System.Windows.Forms.Timer timer2;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.PictureBox Platform2;
-        private System.Windows.Forms.PictureBox pictureBox1;
-
+        //private Panel mainmenu;
+        private PictureBox Gracz;
+        private PictureBox Platform;
+        private Label label1;
+        private Label label2;
+        private Label label3;
+        private Label label4;
+        private Label label5;
+        private Label label6;
+        private Label label7;
+        private Label label8;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private Label label12;
+        private Label label13;
+        private PictureBox Platform2;
+        private PictureBox pictureBox1;
+        private Panel Level1;
+        private Panel menu;
+        private PictureBox Wybor2;
+        private PictureBox Wybor1;
+        private Label label15;
+        private Label label14;
     }
 }
 

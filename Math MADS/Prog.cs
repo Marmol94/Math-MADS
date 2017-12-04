@@ -12,29 +12,35 @@ using System.Windows.Forms;
 namespace Math_MADS
 {
 
-    public partial class Gra : Form
+    public partial class Prog : Form
     {
-        
+
         public bool prawo, lewo, skok, wcis;
         bool spadanie;
         public int force;
+        int i = 0;
         const int G = 35;
         public int mforce;
         Collision kolizja = new Collision();
-        
-
-        public Gra()
+        bool menushow;
+        bool lvl1en;
+        public Prog()
         {
             InitializeComponent();
             mforce = 0;
             force = G;
-              
+            menu.Show();
+            Level1.Hide();
+            menushow = true;
+            lvl1en = false;
+          
+            
 
         }
 
         private void timer2_Tick(object sender, EventArgs e)
         {
-            
+
 
             if (skok && spadanie)
             {
@@ -42,9 +48,9 @@ namespace Math_MADS
                 if (wcis && mforce < force) force += 1;
             }
 
-            if (Gracz.Top + Gracz.Height >= screen.Height - 5)
+            if (Gracz.Top + Gracz.Height >= Level1.Height - 5)
             {
-                Gracz.Top = screen.Height - Gracz.Height - 5;
+                Gracz.Top = Level1.Height - Gracz.Height - 5;
                 skok = false;
                 spadanie = false;
                 mforce = 15;
@@ -73,7 +79,7 @@ namespace Math_MADS
                 force = 0;
                 Gracz.Top += mforce;
             }
-            else if(!kolizja.Top(Platform, Gracz))
+            else if (!kolizja.Top(Platform, Gracz))
             {
                 Gracz.Top += mforce;
                 mforce = mforce + 2;
@@ -82,15 +88,18 @@ namespace Math_MADS
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            
-            if (prawo == true)
+            Side(Platform, Gracz);
+            Side(Platform2, Gracz);
+
+
+            if (prawo && lvl1en)
             {
-                if (Gracz.Right < screen.Right && kolizja.Right(Platform2, Gracz)) Gracz.Left += 2;
+                Gracz.Left += 2;
                 Gracz.Image = Math_MADS.Properties.Resources.prawo;
             }
-            else if (lewo == true)
+            else if (lewo && lvl1en)
             {
-                if(Gracz.Left> screen.Left && kolizja.Left(Platform2, Gracz)) Gracz.Left -= 2;
+                Gracz.Left -= 2;
                 Gracz.Image = Math_MADS.Properties.Resources.lewo;
             }
             else
@@ -105,9 +114,7 @@ namespace Math_MADS
             label9.Text = Convert.ToString(Gracz.SizeMode);
             label13.Text = Convert.ToString(Gracz.Left);
             label12.Text = Convert.ToString(Gracz.Top);
-
         }
-
         public void Side(PictureBox P, PictureBox G)
         {
             int x1, x2, x3, x4, y1, y2, y3, y4, w, h1, h2;
@@ -127,7 +134,6 @@ namespace Math_MADS
             h2 = G.Height;
             if ((x4 <= x1 && x4 >= x2 && (y3 <= y1 + h1 + 5 && y3 + h2 >= y1 + 5)))
             {
-                G.BackColor = Color.Red;
                 lewo = false;
 
             }
@@ -143,21 +149,37 @@ namespace Math_MADS
         }
         private void Gra_KeyDown(object sender, KeyEventArgs e)
         {
-            
+
             if (e.KeyCode == Keys.Right)
             {
                 prawo = true;
 
-    
+
             }
             if (e.KeyCode == Keys.Left)
             {
                 lewo = true;
-
-    
-
+                             
             }
-            if (e.KeyCode == Keys.Escape) { this.Close(); }
+            if (e.KeyCode == Keys.Escape) {
+
+                if (menushow) this.Close();
+                else
+                {
+                    menu.Show();
+                    lvl1en = false;
+                    Level1.Hide();
+                    foreach (Control ctrl in Level1.Controls)
+                    {
+                        ctrl.Enabled = false;
+                    }
+                    foreach (Control ctrl in menu.Controls)
+                    {
+                        ctrl.Enabled = true;
+                    }
+                    menushow=true;
+                }
+            }
             if (!skok)
             {
 
@@ -172,11 +194,51 @@ namespace Math_MADS
 
                 }
             }
+            if(menushow)
+            {
+                if(e.KeyCode==Keys.Up || e.KeyCode==Keys.Down)
+                {
+                    if(i!=0&&menushow)
+                    {
+                        i = 0;
+                        Wybor1.Visible = true;
+                        Wybor2.Visible = false;
+                    }
+                    else
+                    {
+                        i++;
+                        Wybor1.Visible = false;
+                        Wybor2.Visible = true;
+                    }
+                }
+            }
+            if(e.KeyCode==Keys.Enter)
+            {
+                if(i==0&&menushow)
+                {
+                    Level1.Show();
+                    menushow = false;
+                    foreach (Control ctrl in Level1.Controls)
+                    {
+                        ctrl.Enabled = true;
+
+                    }
+                    foreach (Control ctrl in menu.Controls)
+                    {
+                        ctrl.Enabled = false;
+
+                    }
+                    lvl1en = true;
+                    menu.Hide();
+                }
+                else if(menushow)
+                { this.Close(); }
+            }
         }
 
         private void Gra_KeyUp(object sender, KeyEventArgs e)
         {
-            
+
             if (e.KeyCode == Keys.Right)
             {
                 prawo = false;
@@ -191,6 +253,8 @@ namespace Math_MADS
                 //skok = false;
                 wcis = false;
             }
+        
+            
 
         }
     }

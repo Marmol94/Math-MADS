@@ -63,6 +63,16 @@ namespace Math_MADS.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap arrow_hi {
+            get {
+                object obj = ResourceManager.GetObject("arrow-hi", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap blue_spiral_galaxy_wallpaper_1024x768 {
             get {
                 object obj = ResourceManager.GetObject("blue_spiral_galaxy-wallpaper-1024x768", resourceCulture);
