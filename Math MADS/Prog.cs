@@ -14,9 +14,10 @@ namespace Math_MADS
 
     public partial class Prog : Form
     {
-
+        Platformy Test = new Platformy();
+      
         public bool prawo, lewo, skok, wcis;
-        bool spadanie;
+        bool spadanie, control, podnies;
         public int force;
         int i = 0;
         const int G = 35;
@@ -33,9 +34,9 @@ namespace Math_MADS
             Level1.Hide();
             menushow = true;
             lvl1en = false;
-          
+            //Test.Init(100, 100, 20, 40, "Platforma");
             
-
+            
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -48,21 +49,29 @@ namespace Math_MADS
                 if (wcis && mforce < force) force += 1;
             }
 
-            if (Gracz.Top + Gracz.Height >= Level1.Height - 5)
+            if (Gracz.Top + Gracz.Height -5>=Level1.Height)
             {
-                Gracz.Top = Level1.Height - Gracz.Height - 5;
+                Gracz.Top = Level1.Top -5- Gracz.Height;
                 skok = false;
                 spadanie = false;
                 mforce = 15;
                 force = G;
 
             }
-            else if (kolizja.Top(Platform2, Gracz))
+            else if (kolizja.Top(Podloga, Gracz))
             {
                 skok = false;
                 spadanie = false;
                 mforce = 15;
                 force = G;
+                if (!wcis) Gracz.Top = Podloga.Top - Gracz.Height;
+            }
+            else if (kolizja.Top(Platform2, Gracz))
+            {
+                skok = false;
+                spadanie = false;
+                mforce = 0;
+                force = 20;
                 if (!wcis) Gracz.Top = Platform2.Top - Gracz.Height;
             }
             else if (kolizja.Top(Platform, Gracz))
@@ -82,24 +91,48 @@ namespace Math_MADS
             else if (!kolizja.Top(Platform, Gracz))
             {
                 Gracz.Top += mforce;
-                mforce = mforce + 2;
+                if (mforce < force)
+                {
+                    mforce = mforce + 2;
+                    control = true;
+
+                }
+                else if (control)
+                {
+                    mforce = 0;
+                    force = 0;
+                    mforce = mforce + 1;
+                    control = false;
+                }
+                else
+                {
+                    mforce = mforce + 1;
+                }
             }
+            
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
             Side(Platform, Gracz);
             Side(Platform2, Gracz);
+            Side(Skrzynka1, Gracz);
 
-
-            if (prawo && lvl1en)
+            if (podnies && ((Gracz.Left <=Skrzynka1.Right-40&&Gracz.Left>=Skrzynka1.Right)||(Gracz.Right>=Skrzynka1.Left+35&& Gracz.Right <= Skrzynka1.Left))&&Gracz.Top>=Skrzynka1.Top&&Gracz.Top<=Skrzynka1.Bottom)
             {
-                Gracz.Left += 2;
+                if((Gracz.Right == Skrzynka1.Left - 35))
+                {
+                    Skrzynka1.Left = Gracz.Right;
+                }
+            }
+                if (prawo && lvl1en)
+            {
+                Gracz.Left += 3;
                 Gracz.Image = Math_MADS.Properties.Resources.prawo;
             }
             else if (lewo && lvl1en)
             {
-                Gracz.Left -= 2;
+                Gracz.Left -= 3;
                 Gracz.Image = Math_MADS.Properties.Resources.lewo;
             }
             else
@@ -107,7 +140,7 @@ namespace Math_MADS
                 Gracz.Image = Math_MADS.Properties.Resources.przod;
 
             }
-            label1.Text = Convert.ToString(skok);
+            label1.Text = Convert.ToString(podnies);
             label2.Text = Convert.ToString(force);
             label3.Text = Convert.ToString(mforce);
             label4.Text = Convert.ToString(spadanie);
@@ -115,6 +148,9 @@ namespace Math_MADS
             label13.Text = Convert.ToString(Gracz.Left);
             label12.Text = Convert.ToString(Gracz.Top);
         }
+
+       
+
         public void Side(PictureBox P, PictureBox G)
         {
             int x1, x2, x3, x4, y1, y2, y3, y4, w, h1, h2;
@@ -149,7 +185,11 @@ namespace Math_MADS
         }
         private void Gra_KeyDown(object sender, KeyEventArgs e)
         {
-
+            if(e.KeyCode==Keys.E)
+            {
+                if (!podnies) podnies = true;
+                else podnies = false;
+            }
             if (e.KeyCode == Keys.Right)
             {
                 prawo = true;
@@ -163,7 +203,8 @@ namespace Math_MADS
             }
             if (e.KeyCode == Keys.Escape) {
 
-                if (menushow) this.Close();
+                if (menushow) this.Close(); 
+                 
                 else
                 {
                     menu.Show();
@@ -232,9 +273,11 @@ namespace Math_MADS
                     menu.Hide();
                 }
                 else if(menushow)
-                { this.Close(); }
+                {
+                    this.Close(); }
             }
         }
+       
 
         private void Gra_KeyUp(object sender, KeyEventArgs e)
         {

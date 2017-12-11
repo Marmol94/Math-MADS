@@ -96,5 +96,41 @@
   <ItemGroup>
     <None Include="Resources\arrow-hi.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\start2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\koniec1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Galaxy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Galaxy1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\text1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Box1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Box2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Box3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Box4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Box5.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Drzwi4.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Znak_plus.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

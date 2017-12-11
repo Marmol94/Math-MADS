@@ -12,6 +12,15 @@ namespace Math_MADS
 {
     public partial class Platformy
     {
-        public static PictureBox Plat;
+         PictureBox Plat=new PictureBox();
+        public void Init(int x, int y, int h, int w, string nazwa, Panel panel)
+        {
+            
+            Plat.BackColor = System.Drawing.Color.Green;
+            Plat.Location = new System.Drawing.Point(x, y);
+            Plat.Name = nazwa;
+            Plat.Size = new System.Drawing.Size(w, h);
+        
+        }
     }
 }
