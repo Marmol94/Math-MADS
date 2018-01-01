@@ -12,6 +12,8 @@ namespace Math_MADS
 {
     public partial class Collision
     {
+        const int Grav = 35;
+
         int x1, x2, x3, x4, y1, y2, y3, y4, w, h1, h2;
         public bool Bot(PictureBox P, PictureBox G)
         {
@@ -34,7 +36,9 @@ namespace Math_MADS
                 return (true);
             }
             else return (false);
+            
         }
+        
         public bool Top(PictureBox P, PictureBox G)
         {
 
@@ -110,9 +114,12 @@ namespace Math_MADS
             {
                 return (true);
             }
-
+           
             return (false);
 
         }
+
     }
+
+    
 }

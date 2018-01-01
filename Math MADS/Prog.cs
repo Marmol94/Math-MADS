@@ -16,8 +16,8 @@ namespace Math_MADS
     {
         Platformy Test = new Platformy();
       
-        public bool prawo, lewo, skok, wcis;
-        bool spadanie, control, podnies;
+        public bool prawo, lewo, skok, wcis, obok1, obok2, obok3;
+        bool spadanie, control, podnies1, podnies2,podnies3;
         public int force;
         int i = 0;
         const int G = 35;
@@ -116,16 +116,41 @@ namespace Math_MADS
         {
             Side(Platform, Gracz);
             Side(Platform2, Gracz);
-            Side(Skrzynka1, Gracz);
-
-            if (podnies && ((Gracz.Left <=Skrzynka1.Right-40&&Gracz.Left>=Skrzynka1.Right)||(Gracz.Right>=Skrzynka1.Left+35&& Gracz.Right <= Skrzynka1.Left))&&Gracz.Top>=Skrzynka1.Top&&Gracz.Top<=Skrzynka1.Bottom)
+            //Side(Skrzynka1, Gracz);
+            Side(Skrzynka1, Skrzynka2);
+            Side(Skrzynka1, Skrzynka3);
+            Side(Skrzynka2, Skrzynka3);
+            if ((Gracz.Right >= Skrzynka1.Left && Gracz.Left <= Skrzynka1.Right) && (Gracz.Bottom >= Skrzynka1.Bottom || Gracz.Bottom <= Skrzynka1.Bottom + 26))
             {
-                if((Gracz.Right == Skrzynka1.Left - 35))
-                {
-                    Skrzynka1.Left = Gracz.Right;
-                }
+                obok1 = true;
             }
-                if (prawo && lvl1en)
+            else obok1 = false;
+            if ((Gracz.Right >= Skrzynka2.Left && Gracz.Left <= Skrzynka2.Right) && (Gracz.Bottom >= Skrzynka2.Bottom || Gracz.Bottom <= Skrzynka2.Bottom + 26))
+            {
+                obok2 = true;
+            }
+            else obok2 = false;
+            if ((Gracz.Right >= Skrzynka3.Left && Gracz.Left <= Skrzynka3.Right) && (Gracz.Bottom >= Skrzynka3.Bottom || Gracz.Bottom <= Skrzynka3.Bottom + 26))
+            {
+                obok3 = true;
+            }
+            else obok3 = false;
+            if (podnies1 && obok1)
+            {
+                Skrzynka1.Left = Gracz.Right;
+                Skrzynka1.Top = Gracz.Bottom - 26;
+            }
+            if (podnies2 && obok2)
+            {
+                Skrzynka2.Left = Gracz.Right;
+                Skrzynka2.Top = Gracz.Bottom - 26;
+            }
+            if (podnies3 && obok3)
+            {
+                Skrzynka3.Left = Gracz.Right;
+                Skrzynka3.Top = Gracz.Bottom - 26;
+            }
+            if (prawo && lvl1en)
             {
                 Gracz.Left += 3;
                 Gracz.Image = Math_MADS.Properties.Resources.prawo;
@@ -140,17 +165,24 @@ namespace Math_MADS
                 Gracz.Image = Math_MADS.Properties.Resources.przod;
 
             }
-            label1.Text = Convert.ToString(podnies);
-            label2.Text = Convert.ToString(force);
+            label1.Text = Convert.ToString(podnies1);
+            label2.Text = Convert.ToString(obok1);
             label3.Text = Convert.ToString(mforce);
             label4.Text = Convert.ToString(spadanie);
             label9.Text = Convert.ToString(Gracz.SizeMode);
             label13.Text = Convert.ToString(Gracz.Left);
             label12.Text = Convert.ToString(Gracz.Top);
-        }
+            if ((Dod1.Top == Skrzynka1.Bottom && Skrzynka1.Left >= Dod1.Left && Skrzynka1.Right <= Dod1.Right)|| (Dod2.Top == Skrzynka1.Bottom && Skrzynka1.Left >= Dod2.Left && Skrzynka1.Right <= Dod2.Right))
+            {
+                if((Dod1.Top == Skrzynka3.Bottom && Skrzynka3.Left >= Dod1.Left && Skrzynka3.Right <= Dod1.Right) || (Dod2.Top == Skrzynka3.Bottom && Skrzynka1.Left >= Dod2.Left && Skrzynka3.Right <= Dod2.Right))
+                
+                    Drzwi.Enabled = false;
+                
+                        }
 
-       
 
+
+}
         public void Side(PictureBox P, PictureBox G)
         {
             int x1, x2, x3, x4, y1, y2, y3, y4, w, h1, h2;
@@ -187,8 +219,12 @@ namespace Math_MADS
         {
             if(e.KeyCode==Keys.E)
             {
-                if (!podnies) podnies = true;
-                else podnies = false;
+                if (!podnies1 && obok1) podnies1 = true;
+                else podnies1 = false;
+                if (!podnies2 && obok2) podnies2 = true;
+                else podnies2 = false;
+                if (!podnies3 && obok3) podnies3 = true;
+                else podnies3 = false;
             }
             if (e.KeyCode == Keys.Right)
             {
