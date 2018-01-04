@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collision.cs" />
+    <Compile Include="PlayerExtensions.cs" />
     <Compile Include="Prog.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -41,6 +41,7 @@ namespace Math_MADS
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Prog));
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             this.menu = new System.Windows.Forms.Panel();
@@ -49,9 +50,8 @@ namespace Math_MADS
             this.Wybor2 = new System.Windows.Forms.PictureBox();
             this.Wybor1 = new System.Windows.Forms.PictureBox();
             this.Level1 = new System.Windows.Forms.Panel();
+            this.Gracz1 = new Math_MADS.Player();
             this.Gracz = new System.Windows.Forms.PictureBox();
-            this.Gracz1 = new Player();
-
             this.Znak = new System.Windows.Forms.PictureBox();
             this.Dod2 = new System.Windows.Forms.PictureBox();
             this.Dod1 = new System.Windows.Forms.PictureBox();
@@ -121,19 +121,19 @@ namespace Math_MADS
             this.menu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menu.ForeColor = System.Drawing.Color.Black;
             this.menu.Location = new System.Drawing.Point(0, 0);
-            this.menu.Margin = new System.Windows.Forms.Padding(2);
+            this.menu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(754, 586);
+            this.menu.Size = new System.Drawing.Size(1005, 721);
             this.menu.TabIndex = 17;
             // 
             // pictureBox3
             // 
             this.pictureBox3.Image = global::Math_MADS.Properties.Resources.koniec1;
             this.pictureBox3.InitialImage = global::Math_MADS.Properties.Resources.koniec1;
-            this.pictureBox3.Location = new System.Drawing.Point(302, 259);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox3.Location = new System.Drawing.Point(403, 319);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(142, 65);
+            this.pictureBox3.Size = new System.Drawing.Size(189, 80);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
@@ -142,10 +142,10 @@ namespace Math_MADS
             // 
             this.pictureBox2.Image = global::Math_MADS.Properties.Resources.start2;
             this.pictureBox2.InitialImage = global::Math_MADS.Properties.Resources.start2;
-            this.pictureBox2.Location = new System.Drawing.Point(302, 128);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
+            this.pictureBox2.Location = new System.Drawing.Point(403, 158);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(142, 64);
+            this.pictureBox2.Size = new System.Drawing.Size(189, 79);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
@@ -153,10 +153,10 @@ namespace Math_MADS
             // Wybor2
             // 
             this.Wybor2.Image = global::Math_MADS.Properties.Resources.przod;
-            this.Wybor2.Location = new System.Drawing.Point(226, 273);
-            this.Wybor2.Margin = new System.Windows.Forms.Padding(2);
+            this.Wybor2.Location = new System.Drawing.Point(301, 336);
+            this.Wybor2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Wybor2.Name = "Wybor2";
-            this.Wybor2.Size = new System.Drawing.Size(34, 41);
+            this.Wybor2.Size = new System.Drawing.Size(45, 50);
             this.Wybor2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Wybor2.TabIndex = 3;
             this.Wybor2.TabStop = false;
@@ -165,10 +165,10 @@ namespace Math_MADS
             // Wybor1
             // 
             this.Wybor1.Image = global::Math_MADS.Properties.Resources.przod;
-            this.Wybor1.Location = new System.Drawing.Point(226, 151);
-            this.Wybor1.Margin = new System.Windows.Forms.Padding(2);
+            this.Wybor1.Location = new System.Drawing.Point(301, 186);
+            this.Wybor1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Wybor1.Name = "Wybor1";
-            this.Wybor1.Size = new System.Drawing.Size(34, 41);
+            this.Wybor1.Size = new System.Drawing.Size(45, 50);
             this.Wybor1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Wybor1.TabIndex = 2;
             this.Wybor1.TabStop = false;
@@ -179,7 +179,6 @@ namespace Math_MADS
             this.Level1.BackgroundImage = global::Math_MADS.Properties.Resources.Galaxy1;
             this.Level1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Level1.Controls.Add(this.Gracz1);
-
             this.Level1.Controls.Add(this.Gracz);
             this.Level1.Controls.Add(this.Znak);
             this.Level1.Controls.Add(this.Dod2);
@@ -210,31 +209,40 @@ namespace Math_MADS
             this.Level1.Location = new System.Drawing.Point(0, 0);
             this.Level1.Margin = new System.Windows.Forms.Padding(0);
             this.Level1.Name = "Level1";
-            this.Level1.Size = new System.Drawing.Size(754, 586);
+            this.Level1.Size = new System.Drawing.Size(1005, 721);
             this.Level1.TabIndex = 0;
+            // 
+            // Gracz1
+            // 
+            this.Gracz1.Image = ((System.Drawing.Image)(resources.GetObject("Gracz1.Image")));
+            this.Gracz1.Location = new System.Drawing.Point(0, 588);
+            this.Gracz1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Gracz1.Name = "Gracz1";
+            this.Gracz1.Size = new System.Drawing.Size(37, 78);
+            this.Gracz1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Gracz1.TabIndex = 0;
+            this.Gracz1.TabStop = false;
             // 
             // Gracz
             // 
             this.Gracz.BackColor = System.Drawing.Color.Transparent;
             this.Gracz.Cursor = System.Windows.Forms.Cursors.Cross;
             this.Gracz.Image = global::Math_MADS.Properties.Resources.przod;
-            this.Gracz.Location = new System.Drawing.Point(210, 355);
-            this.Gracz.Margin = new System.Windows.Forms.Padding(2);
+            this.Gracz.Location = new System.Drawing.Point(280, 437);
+            this.Gracz.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Gracz.Name = "Gracz";
-            this.Gracz.Size = new System.Drawing.Size(28, 63);
+            this.Gracz.Size = new System.Drawing.Size(37, 78);
             this.Gracz.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Gracz.TabIndex = 23;
             this.Gracz.TabStop = false;
-
-            this.Gracz1.InitializePlayer();
             // 
             // Znak
             // 
             this.Znak.Image = global::Math_MADS.Properties.Resources.Znak_plus;
-            this.Znak.Location = new System.Drawing.Point(610, 500);
-            this.Znak.Margin = new System.Windows.Forms.Padding(2);
+            this.Znak.Location = new System.Drawing.Point(813, 615);
+            this.Znak.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Znak.Name = "Znak";
-            this.Znak.Size = new System.Drawing.Size(30, 57);
+            this.Znak.Size = new System.Drawing.Size(40, 70);
             this.Znak.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Znak.TabIndex = 24;
             this.Znak.TabStop = false;
@@ -242,30 +250,30 @@ namespace Math_MADS
             // Dod2
             // 
             this.Dod2.BackColor = System.Drawing.Color.Silver;
-            this.Dod2.Location = new System.Drawing.Point(644, 556);
-            this.Dod2.Margin = new System.Windows.Forms.Padding(2);
+            this.Dod2.Location = new System.Drawing.Point(859, 684);
+            this.Dod2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Dod2.Name = "Dod2";
-            this.Dod2.Size = new System.Drawing.Size(38, 11);
+            this.Dod2.Size = new System.Drawing.Size(51, 14);
             this.Dod2.TabIndex = 0;
             this.Dod2.TabStop = false;
             // 
             // Dod1
             // 
             this.Dod1.BackColor = System.Drawing.Color.Silver;
-            this.Dod1.Location = new System.Drawing.Point(568, 556);
-            this.Dod1.Margin = new System.Windows.Forms.Padding(2);
+            this.Dod1.Location = new System.Drawing.Point(757, 684);
+            this.Dod1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Dod1.Name = "Dod1";
-            this.Dod1.Size = new System.Drawing.Size(38, 11);
+            this.Dod1.Size = new System.Drawing.Size(51, 14);
             this.Dod1.TabIndex = 22;
             this.Dod1.TabStop = false;
             // 
             // Drzwi
             // 
             this.Drzwi.Image = global::Math_MADS.Properties.Resources.Drzwi4;
-            this.Drzwi.Location = new System.Drawing.Point(726, 410);
-            this.Drzwi.Margin = new System.Windows.Forms.Padding(2);
+            this.Drzwi.Location = new System.Drawing.Point(968, 505);
+            this.Drzwi.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Drzwi.Name = "Drzwi";
-            this.Drzwi.Size = new System.Drawing.Size(28, 147);
+            this.Drzwi.Size = new System.Drawing.Size(37, 181);
             this.Drzwi.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Drzwi.TabIndex = 21;
             this.Drzwi.TabStop = false;
@@ -273,10 +281,10 @@ namespace Math_MADS
             // Skrzynka3
             // 
             this.Skrzynka3.Image = global::Math_MADS.Properties.Resources.Box3;
-            this.Skrzynka3.Location = new System.Drawing.Point(95, 387);
-            this.Skrzynka3.Margin = new System.Windows.Forms.Padding(2);
+            this.Skrzynka3.Location = new System.Drawing.Point(127, 476);
+            this.Skrzynka3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Skrzynka3.Name = "Skrzynka3";
-            this.Skrzynka3.Size = new System.Drawing.Size(26, 26);
+            this.Skrzynka3.Size = new System.Drawing.Size(35, 32);
             this.Skrzynka3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Skrzynka3.TabIndex = 20;
             this.Skrzynka3.TabStop = false;
@@ -284,10 +292,10 @@ namespace Math_MADS
             // Skrzynka2
             // 
             this.Skrzynka2.Image = global::Math_MADS.Properties.Resources.Box2;
-            this.Skrzynka2.Location = new System.Drawing.Point(302, 367);
-            this.Skrzynka2.Margin = new System.Windows.Forms.Padding(2);
+            this.Skrzynka2.Location = new System.Drawing.Point(403, 452);
+            this.Skrzynka2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Skrzynka2.Name = "Skrzynka2";
-            this.Skrzynka2.Size = new System.Drawing.Size(26, 26);
+            this.Skrzynka2.Size = new System.Drawing.Size(35, 32);
             this.Skrzynka2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Skrzynka2.TabIndex = 19;
             this.Skrzynka2.TabStop = false;
@@ -295,20 +303,20 @@ namespace Math_MADS
             // Sciana
             // 
             this.Sciana.BackgroundImage = global::Math_MADS.Properties.Resources.text1;
-            this.Sciana.Location = new System.Drawing.Point(726, 0);
-            this.Sciana.Margin = new System.Windows.Forms.Padding(2);
+            this.Sciana.Location = new System.Drawing.Point(968, 0);
+            this.Sciana.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Sciana.Name = "Sciana";
-            this.Sciana.Size = new System.Drawing.Size(28, 410);
+            this.Sciana.Size = new System.Drawing.Size(37, 505);
             this.Sciana.TabIndex = 18;
             this.Sciana.TabStop = false;
             // 
             // Skrzynka1
             // 
             this.Skrzynka1.Image = global::Math_MADS.Properties.Resources.Box1;
-            this.Skrzynka1.Location = new System.Drawing.Point(360, 367);
-            this.Skrzynka1.Margin = new System.Windows.Forms.Padding(2);
+            this.Skrzynka1.Location = new System.Drawing.Point(480, 452);
+            this.Skrzynka1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Skrzynka1.Name = "Skrzynka1";
-            this.Skrzynka1.Size = new System.Drawing.Size(26, 26);
+            this.Skrzynka1.Size = new System.Drawing.Size(35, 32);
             this.Skrzynka1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Skrzynka1.TabIndex = 17;
             this.Skrzynka1.TabStop = false;
@@ -318,10 +326,10 @@ namespace Math_MADS
             this.Podloga.BackColor = System.Drawing.Color.Transparent;
             this.Podloga.BackgroundImage = global::Math_MADS.Properties.Resources.text1;
             this.Podloga.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.Podloga.Location = new System.Drawing.Point(0, 556);
-            this.Podloga.Margin = new System.Windows.Forms.Padding(2);
+            this.Podloga.Location = new System.Drawing.Point(0, 684);
+            this.Podloga.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Podloga.Name = "Podloga";
-            this.Podloga.Size = new System.Drawing.Size(754, 30);
+            this.Podloga.Size = new System.Drawing.Size(1005, 37);
             this.Podloga.TabIndex = 16;
             this.Podloga.TabStop = false;
             // 
@@ -329,20 +337,19 @@ namespace Math_MADS
             // 
             this.Platform2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Platform2.BackgroundImage = global::Math_MADS.Properties.Resources.text1;
-            this.Platform2.Location = new System.Drawing.Point(302, 396);
-            this.Platform2.Margin = new System.Windows.Forms.Padding(2);
+            this.Platform2.Location = new System.Drawing.Point(403, 487);
+            this.Platform2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Platform2.Name = "Platform2";
-            this.Platform2.Size = new System.Drawing.Size(88, 22);
+            this.Platform2.Size = new System.Drawing.Size(117, 27);
             this.Platform2.TabIndex = 15;
             this.Platform2.TabStop = false;
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(584, 259);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Location = new System.Drawing.Point(779, 319);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(41, 13);
+            this.label13.Size = new System.Drawing.Size(54, 17);
             this.label13.TabIndex = 14;
             this.label13.Text = "label13";
             this.label13.Visible = false;
@@ -350,10 +357,9 @@ namespace Math_MADS
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(584, 300);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Location = new System.Drawing.Point(779, 369);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(41, 13);
+            this.label12.Size = new System.Drawing.Size(54, 17);
             this.label12.TabIndex = 13;
             this.label12.Text = "label12";
             this.label12.Visible = false;
@@ -361,10 +367,9 @@ namespace Math_MADS
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(515, 300);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Location = new System.Drawing.Point(687, 369);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(14, 13);
+            this.label11.Size = new System.Drawing.Size(17, 17);
             this.label11.TabIndex = 12;
             this.label11.Text = "Y";
             this.label11.Visible = false;
@@ -372,10 +377,9 @@ namespace Math_MADS
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(515, 259);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Location = new System.Drawing.Point(687, 319);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(14, 13);
+            this.label10.Size = new System.Drawing.Size(17, 17);
             this.label10.TabIndex = 11;
             this.label10.Text = "X";
             this.label10.Visible = false;
@@ -383,10 +387,9 @@ namespace Math_MADS
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(515, 507);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(687, 624);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(35, 13);
+            this.label9.Size = new System.Drawing.Size(46, 17);
             this.label9.TabIndex = 10;
             this.label9.Text = "label9";
             this.label9.Visible = false;
@@ -394,10 +397,9 @@ namespace Math_MADS
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(485, 477);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(647, 587);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(39, 13);
+            this.label8.Size = new System.Drawing.Size(51, 17);
             this.label8.TabIndex = 9;
             this.label8.Text = "mforce";
             this.label8.Visible = false;
@@ -405,10 +407,9 @@ namespace Math_MADS
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(485, 440);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(647, 542);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(31, 13);
+            this.label7.Size = new System.Drawing.Size(40, 17);
             this.label7.TabIndex = 8;
             this.label7.Text = "force";
             this.label7.Visible = false;
@@ -416,10 +417,9 @@ namespace Math_MADS
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(482, 387);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(643, 476);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(50, 13);
+            this.label6.Size = new System.Drawing.Size(66, 17);
             this.label6.TabIndex = 7;
             this.label6.Text = "spadanie";
             this.label6.Visible = false;
@@ -427,10 +427,9 @@ namespace Math_MADS
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(485, 332);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(647, 409);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(32, 13);
+            this.label5.Size = new System.Drawing.Size(39, 17);
             this.label5.TabIndex = 6;
             this.label5.Text = "Skok";
             this.label5.Visible = false;
@@ -438,10 +437,9 @@ namespace Math_MADS
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(536, 387);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(715, 476);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(35, 13);
+            this.label4.Size = new System.Drawing.Size(46, 17);
             this.label4.TabIndex = 5;
             this.label4.Text = "label4";
             this.label4.Visible = false;
@@ -449,10 +447,9 @@ namespace Math_MADS
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(536, 477);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(715, 587);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(35, 13);
+            this.label3.Size = new System.Drawing.Size(46, 17);
             this.label3.TabIndex = 4;
             this.label3.Text = "label3";
             this.label3.Visible = false;
@@ -460,20 +457,18 @@ namespace Math_MADS
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(536, 440);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(715, 542);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(46, 17);
             this.label2.TabIndex = 3;
             this.label2.Text = "label2";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(536, 332);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(715, 409);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(46, 17);
             this.label1.TabIndex = 2;
             this.label1.Text = "label1";
             // 
@@ -481,23 +476,23 @@ namespace Math_MADS
             // 
             this.Platform.BackColor = System.Drawing.Color.Maroon;
             this.Platform.BackgroundImage = global::Math_MADS.Properties.Resources.text1;
-            this.Platform.Location = new System.Drawing.Point(87, 415);
-            this.Platform.Margin = new System.Windows.Forms.Padding(2);
+            this.Platform.Location = new System.Drawing.Point(116, 511);
+            this.Platform.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Platform.Name = "Platform";
-            this.Platform.Size = new System.Drawing.Size(95, 25);
+            this.Platform.Size = new System.Drawing.Size(127, 155);
             this.Platform.TabIndex = 1;
             this.Platform.TabStop = false;
             // 
             // Prog
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(754, 586);
+            this.ClientSize = new System.Drawing.Size(1005, 721);
             this.Controls.Add(this.Level1);
             this.Controls.Add(this.menu);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(2);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "Prog";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Gra_KeyDown);
@@ -510,7 +505,6 @@ namespace Math_MADS
             this.Level1.ResumeLayout(false);
             this.Level1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.Gracz1)).EndInit();
-
             ((System.ComponentModel.ISupportInitialize)(this.Gracz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Znak)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dod2)).EndInit();

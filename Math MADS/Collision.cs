@@ -14,94 +14,33 @@ namespace Math_MADS
     {
         const int Grav = 35;
 
-        int x1, x2, x3, x4, y1, y2, y3, y4, w, h1, h2;
-        public bool Bot(PictureBox P, PictureBox G)
+
+        public bool Bot(PictureBox platform, PictureBox player)
         {
-
-            x1 = P.Right;
-            x2 = P.Left;
-            y1 = P.Top;
-            y2 = P.Bottom;
-
-            x3 = G.Right;
-            x4 = G.Left;
-            y3 = G.Top;
-            y4 = G.Bottom;
-
-            w = G.Width;
-            h1 = P.Height;
-            h2 = G.Height;
-            if (y2 >= y3 && y1<=y4 && x3 <= x1+w && x4 >= x2-w)
-            {
-                return (true);
-            }
-            else return (false);
-            
-        }
-        
-        public bool Top(PictureBox P, PictureBox G)
-        {
-
-            x1 = P.Right;
-            x2 = P.Left;
-            y1 = P.Top;
-            y2 = P.Bottom;
-
-            x3 = G.Right;
-            x4 = G.Left;
-            y3 = G.Top;
-            y4 = G.Bottom;
-
-            w = G.Width;
-            h1 = P.Height;
-            h2 = G.Height;
-
-            if (y4 >= y1 && y4 <= y2 && x3 >= x2 + w / 4 && x4 + w / 4 <= x1)
-            {
-
-                return (true);
-
-
-            }
-
-            else
-            {
-                return (false);
-            }
+            return PlayerExtensions.IsInLine(player, platform) &&
+                   player.Right <= platform.Right + player.Width/4 && player.Left >= platform.Left - player.Width/4;
         }
 
-        public void SideCollision(PictureBox P, PictureBox G, Prog prog)
+        public bool Top(PictureBox platform, PictureBox player)
         {
-            int x1, x2, x3, x4, y1, y2, y3, y4, w, h1, h2;
+            return PlayerExtensions.IsInLine(player, platform) &&
+                   player.Right >= platform.Left + player.Width / 4 && player.Left + player.Width / 4 <= platform.Right;
+        }
 
-            x1 = P.Right;
-            x2 = P.Left;
-            y1 = P.Top;
-            //y2 = P.Bottom;
+       
 
-            x3 = G.Right;
-            x4 = G.Left;
-            y3 = G.Top;
-            y4 = G.Bottom;
-
-            //w = P.Width;
-            h1 = P.Height;
-            h2 = G.Height;
-            if ((x4 <= x1 && x4 >= x2 && (y3 <= y1 + h1 + 5 && y3 + h2 >= y1 + 5)))
+        public void SideCollisionMovementEnabler(PictureBox platform, PictureBox player, Prog prog)
+        {
+            var isSharingVerticalSpace = player.IsBelow(platform) && player.IsAbove(platform);
+            if ((player.Left <= platform.Right && player.Left >= platform.Left && isSharingVerticalSpace))
             {
-                prog.lewo = false;
-
+                prog.isLeftMovementAvailable = false;
             }
 
-            if (x3 >= x2 && x3 <= x1 && (y3 <= y1 + h1 + 5 && y3 + h2 >= y1 + 5))
+            if (platform.Left <= player.Right && player.Right <= platform.Right && isSharingVerticalSpace)
             {
-                prog.prawo = false;
-
+                prog.isRightMovementAvailable = false;
             }
-
-
         }
     }
-
-    
 }

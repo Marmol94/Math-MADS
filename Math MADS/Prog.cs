@@ -16,7 +16,7 @@ namespace Math_MADS
     {
         Platformy Test = new Platformy();
        Player Gracz1=new Player();
-        public bool prawo, lewo, skok, wcis, obok1, obok2, obok3;
+        public bool isRightMovementAvailable, isLeftMovementAvailable, skok, wcis, obok1, obok2, obok3;
         bool spadanie, control, podnies1, podnies2,podnies3;
         public int force;
         int i = 0;
@@ -116,12 +116,12 @@ namespace Math_MADS
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            kolizja.SideCollision(Platform, Gracz, this);
-            kolizja.SideCollision(Platform2, Gracz, this);
-            //SideCollision(Skrzynka1, Gracz);
-            kolizja.SideCollision(Skrzynka1, Skrzynka2, this);
-            kolizja.SideCollision(Skrzynka1, Skrzynka3, this);
-            kolizja.SideCollision(Skrzynka2, Skrzynka3, this);
+            kolizja.SideCollisionMovementEnabler(Platform, Gracz, this);
+            kolizja.SideCollisionMovementEnabler(Platform2, Gracz, this);
+            //SideCollisionMovementEnabler(Skrzynka1, Gracz);
+            kolizja.SideCollisionMovementEnabler(Skrzynka1, Skrzynka2, this);
+            kolizja.SideCollisionMovementEnabler(Skrzynka1, Skrzynka3, this);
+            kolizja.SideCollisionMovementEnabler(Skrzynka2, Skrzynka3, this);
             if ((Gracz.Right >= Skrzynka1.Left && Gracz.Left <= Skrzynka1.Right) && (Gracz.Bottom >= Skrzynka1.Bottom || Gracz.Bottom <= Skrzynka1.Bottom + 26))
             {
                 obok1 = true;
@@ -152,12 +152,12 @@ namespace Math_MADS
                 Skrzynka3.Left = Gracz.Right;
                 Skrzynka3.Top = Gracz.Bottom - 26;
             }
-            if (prawo && lvl1en)
+            if (isRightMovementAvailable && lvl1en)
             {
                 Gracz.Left += 3;
                 Gracz.Image = Math_MADS.Properties.Resources.prawo;
             }
-            else if (lewo && lvl1en)
+            else if (isLeftMovementAvailable && lvl1en)
             {
                 Gracz.Left -= 3;
                 Gracz.Image = Math_MADS.Properties.Resources.lewo;
@@ -199,13 +199,13 @@ namespace Math_MADS
             }
             if (e.KeyCode == Keys.Right)
             {
-                prawo = true;
+                isRightMovementAvailable = true;
 
 
             }
             if (e.KeyCode == Keys.Left)
             {
-                lewo = true;
+                isLeftMovementAvailable = true;
                              
             }
             if (e.KeyCode == Keys.Escape) {
@@ -291,11 +291,11 @@ namespace Math_MADS
 
             if (e.KeyCode == Keys.Right)
             {
-                prawo = false;
+                isRightMovementAvailable = false;
             }
             if (e.KeyCode == Keys.Left)
             {
-                lewo = false;
+                isLeftMovementAvailable = false;
 
             }
             if (e.KeyCode == Keys.Space)
