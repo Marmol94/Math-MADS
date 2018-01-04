@@ -50,8 +50,6 @@ namespace Math_MADS
             this.Wybor2 = new System.Windows.Forms.PictureBox();
             this.Wybor1 = new System.Windows.Forms.PictureBox();
             this.Level1 = new System.Windows.Forms.Panel();
-            this.Gracz1 = new Math_MADS.Player();
-            this.Gracz = new System.Windows.Forms.PictureBox();
             this.Znak = new System.Windows.Forms.PictureBox();
             this.Dod2 = new System.Windows.Forms.PictureBox();
             this.Dod1 = new System.Windows.Forms.PictureBox();
@@ -76,14 +74,13 @@ namespace Math_MADS
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.Platform = new System.Windows.Forms.PictureBox();
+            this.Gracz1 = new Math_MADS.Player();
             this.menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Wybor2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Wybor1)).BeginInit();
             this.Level1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Gracz1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Gracz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Znak)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dod2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dod1)).BeginInit();
@@ -95,6 +92,7 @@ namespace Math_MADS
             ((System.ComponentModel.ISupportInitialize)(this.Podloga)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Platform2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Platform)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Gracz1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -179,7 +177,6 @@ namespace Math_MADS
             this.Level1.BackgroundImage = global::Math_MADS.Properties.Resources.Galaxy1;
             this.Level1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.Level1.Controls.Add(this.Gracz1);
-            this.Level1.Controls.Add(this.Gracz);
             this.Level1.Controls.Add(this.Znak);
             this.Level1.Controls.Add(this.Dod2);
             this.Level1.Controls.Add(this.Dod1);
@@ -211,30 +208,6 @@ namespace Math_MADS
             this.Level1.Name = "Level1";
             this.Level1.Size = new System.Drawing.Size(1005, 721);
             this.Level1.TabIndex = 0;
-            // 
-            // Gracz1
-            // 
-            this.Gracz1.Image = ((System.Drawing.Image)(resources.GetObject("Gracz1.Image")));
-            this.Gracz1.Location = new System.Drawing.Point(0, 588);
-            this.Gracz1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.Gracz1.Name = "Gracz1";
-            this.Gracz1.Size = new System.Drawing.Size(37, 78);
-            this.Gracz1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Gracz1.TabIndex = 0;
-            this.Gracz1.TabStop = false;
-            // 
-            // Gracz
-            // 
-            this.Gracz.BackColor = System.Drawing.Color.Transparent;
-            this.Gracz.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.Gracz.Image = global::Math_MADS.Properties.Resources.przod;
-            this.Gracz.Location = new System.Drawing.Point(280, 437);
-            this.Gracz.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Gracz.Name = "Gracz";
-            this.Gracz.Size = new System.Drawing.Size(37, 78);
-            this.Gracz.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.Gracz.TabIndex = 23;
-            this.Gracz.TabStop = false;
             // 
             // Znak
             // 
@@ -292,7 +265,7 @@ namespace Math_MADS
             // Skrzynka2
             // 
             this.Skrzynka2.Image = global::Math_MADS.Properties.Resources.Box2;
-            this.Skrzynka2.Location = new System.Drawing.Point(403, 452);
+            this.Skrzynka2.Location = new System.Drawing.Point(403, 418);
             this.Skrzynka2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Skrzynka2.Name = "Skrzynka2";
             this.Skrzynka2.Size = new System.Drawing.Size(35, 32);
@@ -313,7 +286,7 @@ namespace Math_MADS
             // Skrzynka1
             // 
             this.Skrzynka1.Image = global::Math_MADS.Properties.Resources.Box1;
-            this.Skrzynka1.Location = new System.Drawing.Point(480, 452);
+            this.Skrzynka1.Location = new System.Drawing.Point(485, 418);
             this.Skrzynka1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Skrzynka1.Name = "Skrzynka1";
             this.Skrzynka1.Size = new System.Drawing.Size(35, 32);
@@ -337,10 +310,10 @@ namespace Math_MADS
             // 
             this.Platform2.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Platform2.BackgroundImage = global::Math_MADS.Properties.Resources.text1;
-            this.Platform2.Location = new System.Drawing.Point(403, 487);
+            this.Platform2.Location = new System.Drawing.Point(403, 460);
             this.Platform2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Platform2.Name = "Platform2";
-            this.Platform2.Size = new System.Drawing.Size(117, 27);
+            this.Platform2.Size = new System.Drawing.Size(117, 33);
             this.Platform2.TabIndex = 15;
             this.Platform2.TabStop = false;
             // 
@@ -483,6 +456,17 @@ namespace Math_MADS
             this.Platform.TabIndex = 1;
             this.Platform.TabStop = false;
             // 
+            // Gracz1
+            // 
+            this.Gracz1.Image = ((System.Drawing.Image)(resources.GetObject("Gracz1.Image")));
+            this.Gracz1.Location = new System.Drawing.Point(0, 588);
+            this.Gracz1.Margin = new System.Windows.Forms.Padding(4);
+            this.Gracz1.Name = "Gracz1";
+            this.Gracz1.Size = new System.Drawing.Size(37, 78);
+            this.Gracz1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.Gracz1.TabIndex = 0;
+            this.Gracz1.TabStop = false;
+            // 
             // Prog
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -504,8 +488,6 @@ namespace Math_MADS
             ((System.ComponentModel.ISupportInitialize)(this.Wybor1)).EndInit();
             this.Level1.ResumeLayout(false);
             this.Level1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.Gracz1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.Gracz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Znak)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dod2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dod1)).EndInit();
@@ -517,6 +499,7 @@ namespace Math_MADS
             ((System.ComponentModel.ISupportInitialize)(this.Podloga)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Platform2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Platform)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.Gracz1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -526,8 +509,6 @@ namespace Math_MADS
         private System.Windows.Forms.Timer timer2;
         //private Panel mainmenu;
         private PictureBox Znak;
-
-        private PictureBox Gracz;
         private PictureBox Platform;
         private Label label1;
         private Label label2;

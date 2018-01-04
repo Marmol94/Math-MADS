@@ -15,13 +15,13 @@ namespace Math_MADS
         const int Grav = 35;
 
 
-        public bool Bot(PictureBox platform, PictureBox player)
+        public bool Bot(PictureBox platform, Player player)
         {
             return PlayerExtensions.IsInLine(player, platform) &&
                    player.Right <= platform.Right + player.Width/4 && player.Left >= platform.Left - player.Width/4;
         }
 
-        public bool Top(PictureBox platform, PictureBox player)
+        public bool Top(PictureBox platform, Player player)
         {
             return PlayerExtensions.IsInLine(player, platform) &&
                    player.Right >= platform.Left + player.Width / 4 && player.Left + player.Width / 4 <= platform.Right;
@@ -29,7 +29,7 @@ namespace Math_MADS
 
        
 
-        public void SideCollisionMovementEnabler(PictureBox platform, PictureBox player, Prog prog)
+        public void SideCollisionMovementEnabler(PictureBox platform, Player player, Prog prog)
         {
             var isSharingVerticalSpace = player.IsBelow(platform) && player.IsAbove(platform);
             if ((player.Left <= platform.Right && player.Left >= platform.Left && isSharingVerticalSpace))
