@@ -15,7 +15,7 @@ namespace Math_MADS
     public partial class Prog : Form
     {
         Platformy Test = new Platformy();
-      
+       Player Gracz1=new Player();
         public bool prawo, lewo, skok, wcis, obok1, obok2, obok3;
         bool spadanie, control, podnies1, podnies2,podnies3;
         public int force;
@@ -34,9 +34,10 @@ namespace Math_MADS
             Level1.Hide();
             menushow = true;
             lvl1en = false;
+            Gracz1.InitializePlayer();
             //Test.Init(100, 100, 20, 40, "Platforma");
-            
-            
+
+
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -76,6 +77,7 @@ namespace Math_MADS
             }
             else if (kolizja.Top(Platform, Gracz))
             {
+               
                 skok = false;
                 spadanie = false;
                 mforce = 15;
@@ -114,12 +116,12 @@ namespace Math_MADS
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            Side(Platform, Gracz);
-            Side(Platform2, Gracz);
-            //Side(Skrzynka1, Gracz);
-            Side(Skrzynka1, Skrzynka2);
-            Side(Skrzynka1, Skrzynka3);
-            Side(Skrzynka2, Skrzynka3);
+            kolizja.SideCollision(Platform, Gracz, this);
+            kolizja.SideCollision(Platform2, Gracz, this);
+            //SideCollision(Skrzynka1, Gracz);
+            kolizja.SideCollision(Skrzynka1, Skrzynka2, this);
+            kolizja.SideCollision(Skrzynka1, Skrzynka3, this);
+            kolizja.SideCollision(Skrzynka2, Skrzynka3, this);
             if ((Gracz.Right >= Skrzynka1.Left && Gracz.Left <= Skrzynka1.Right) && (Gracz.Bottom >= Skrzynka1.Bottom || Gracz.Bottom <= Skrzynka1.Bottom + 26))
             {
                 obok1 = true;
@@ -183,38 +185,7 @@ namespace Math_MADS
 
 
 }
-        public void Side(PictureBox P, PictureBox G)
-        {
-            int x1, x2, x3, x4, y1, y2, y3, y4, w, h1, h2;
 
-            x1 = P.Right;
-            x2 = P.Left;
-            y1 = P.Top;
-            //y2 = P.Bottom;
-
-            x3 = G.Right;
-            x4 = G.Left;
-            y3 = G.Top;
-            y4 = G.Bottom;
-
-            //w = P.Width;
-            h1 = P.Height;
-            h2 = G.Height;
-            if ((x4 <= x1 && x4 >= x2 && (y3 <= y1 + h1 + 5 && y3 + h2 >= y1 + 5)))
-            {
-                lewo = false;
-
-            }
-
-            if (x3 >= x2 && x3 <= x1 && (y3 <= y1 + h1 + 5 && y3 + h2 >= y1 + 5))
-            {
-
-                prawo = false;
-
-            }
-
-
-        }
         private void Gra_KeyDown(object sender, KeyEventArgs e)
         {
             if(e.KeyCode==Keys.E)
@@ -313,7 +284,7 @@ namespace Math_MADS
                     this.Close(); }
             }
         }
-       
+
 
         private void Gra_KeyUp(object sender, KeyEventArgs e)
         {

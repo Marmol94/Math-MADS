@@ -69,33 +69,10 @@ namespace Math_MADS
                 return (false);
             }
         }
-        public bool Right(PictureBox P, PictureBox G)
+
+        public void SideCollision(PictureBox P, PictureBox G, Prog prog)
         {
-            
-            x1 = P.Right;
-            x2 = P.Left;
-            y1 = P.Top;
-            //y2 = P.Bottom;
-
-            x3 = G.Right;
-            x4 = G.Left;
-            y3 = G.Top;
-            y4 = G.Bottom;
-
-            //w = P.Width;
-            h1 = P.Height;
-            h2 = G.Height;
-
-
-            if (x3 >= x2 && x3 <= x1 && y4 <= y1 - 5 && y4 >= y1 - 5)
-            {
-                return (true);
-            }
-            return (false);
-           
-        }
-        public bool Left(PictureBox P, PictureBox G)
-        {
+            int x1, x2, x3, x4, y1, y2, y3, y4, w, h1, h2;
 
             x1 = P.Right;
             x2 = P.Left;
@@ -110,15 +87,20 @@ namespace Math_MADS
             //w = P.Width;
             h1 = P.Height;
             h2 = G.Height;
-            if (x4 <= x1 && x4 >= x2 && y4 <= y1 - 5 && y4 >= y1 - 5)
+            if ((x4 <= x1 && x4 >= x2 && (y3 <= y1 + h1 + 5 && y3 + h2 >= y1 + 5)))
             {
-                return (true);
+                prog.lewo = false;
+
             }
-           
-            return (false);
+
+            if (x3 >= x2 && x3 <= x1 && (y3 <= y1 + h1 + 5 && y3 + h2 >= y1 + 5))
+            {
+                prog.prawo = false;
+
+            }
+
 
         }
-
     }
 
     

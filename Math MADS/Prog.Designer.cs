@@ -50,6 +50,8 @@ namespace Math_MADS
             this.Wybor1 = new System.Windows.Forms.PictureBox();
             this.Level1 = new System.Windows.Forms.Panel();
             this.Gracz = new System.Windows.Forms.PictureBox();
+            this.Gracz1 = new Player();
+
             this.Znak = new System.Windows.Forms.PictureBox();
             this.Dod2 = new System.Windows.Forms.PictureBox();
             this.Dod1 = new System.Windows.Forms.PictureBox();
@@ -80,6 +82,7 @@ namespace Math_MADS
             ((System.ComponentModel.ISupportInitialize)(this.Wybor2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Wybor1)).BeginInit();
             this.Level1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Gracz1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Gracz)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Znak)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dod2)).BeginInit();
@@ -175,6 +178,8 @@ namespace Math_MADS
             this.Level1.BackColor = System.Drawing.Color.Transparent;
             this.Level1.BackgroundImage = global::Math_MADS.Properties.Resources.Galaxy1;
             this.Level1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.Level1.Controls.Add(this.Gracz1);
+
             this.Level1.Controls.Add(this.Gracz);
             this.Level1.Controls.Add(this.Znak);
             this.Level1.Controls.Add(this.Dod2);
@@ -220,6 +225,8 @@ namespace Math_MADS
             this.Gracz.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.Gracz.TabIndex = 23;
             this.Gracz.TabStop = false;
+
+            this.Gracz1.InitializePlayer();
             // 
             // Znak
             // 
@@ -502,6 +509,8 @@ namespace Math_MADS
             ((System.ComponentModel.ISupportInitialize)(this.Wybor1)).EndInit();
             this.Level1.ResumeLayout(false);
             this.Level1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.Gracz1)).EndInit();
+
             ((System.ComponentModel.ISupportInitialize)(this.Gracz)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Znak)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Dod2)).EndInit();
