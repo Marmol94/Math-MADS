@@ -44,13 +44,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Collision.cs" />
-    <Compile Include="Gravity.cs" />
-    <Compile Include="Level.cs">
+    <Compile Include="InteractiveObject.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="LevelSelect.cs">
+    <Compile Include="Level.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Menu.cs">

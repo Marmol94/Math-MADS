@@ -97,7 +97,7 @@ namespace Math_MADS
             // timer2
             // 
             this.timer2.Enabled = true;
-            this.timer2.Interval = 12;
+            this.timer2.Interval = 10;
             this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // label13
@@ -240,37 +240,37 @@ namespace Math_MADS
             this.menu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.menu.ForeColor = System.Drawing.Color.Black;
             this.menu.Location = new System.Drawing.Point(0, 0);
-            this.menu.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.menu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(1005, 721);
-            this.menu.TabIndex = 17;
+            this.menu.Size = new System.Drawing.Size(754, 586);
+            this.menu.TabIndex = 12;
             // 
             // pictureBox3
             // 
-            this.pictureBox3.Location = new System.Drawing.Point(403, 319);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox3.Location = new System.Drawing.Point(302, 259);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(189, 80);
+            this.pictureBox3.Size = new System.Drawing.Size(142, 65);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox3.TabIndex = 7;
             this.pictureBox3.TabStop = false;
             // 
             // pictureBox2
             // 
-            this.pictureBox2.Location = new System.Drawing.Point(403, 158);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.pictureBox2.Location = new System.Drawing.Point(302, 128);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(189, 79);
+            this.pictureBox2.Size = new System.Drawing.Size(142, 64);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox2.TabIndex = 6;
             this.pictureBox2.TabStop = false;
             // 
             // Wybor2
             // 
-            this.Wybor2.Location = new System.Drawing.Point(301, 336);
-            this.Wybor2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Wybor2.Location = new System.Drawing.Point(226, 273);
+            this.Wybor2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Wybor2.Name = "Wybor2";
-            this.Wybor2.Size = new System.Drawing.Size(45, 50);
+            this.Wybor2.Size = new System.Drawing.Size(34, 41);
             this.Wybor2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Wybor2.TabIndex = 3;
             this.Wybor2.TabStop = false;
@@ -278,10 +278,10 @@ namespace Math_MADS
             // 
             // Wybor1
             // 
-            this.Wybor1.Location = new System.Drawing.Point(301, 186);
-            this.Wybor1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Wybor1.Location = new System.Drawing.Point(226, 151);
+            this.Wybor1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Wybor1.Name = "Wybor1";
-            this.Wybor1.Size = new System.Drawing.Size(45, 50);
+            this.Wybor1.Size = new System.Drawing.Size(34, 41);
             this.Wybor1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.Wybor1.TabIndex = 2;
             this.Wybor1.TabStop = false;
@@ -387,13 +387,13 @@ namespace Math_MADS
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.ClientSize = new System.Drawing.Size(1005, 721);
+            this.ClientSize = new System.Drawing.Size(754, 586);
             this.Controls.Add(this.menu);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Main";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Gra_KeyDown);

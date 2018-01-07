@@ -17,12 +17,15 @@ namespace Math_MADS
 
         public bool Bot(Platform platform, Player player)
         {
-            return platform.Bottom >= player.Top && platform.Top <= player.Bottom &&
-                   player.Right <= platform.Right + player.Width && player.Left >= platform.Left - player.Width;
+           Platform temp1 = new Platform();
+            temp1.Bounds = platform.Bounds;
+            temp1.SetBounds(temp1.Location.X, temp1.Location.Y + temp1.Height, temp1.Width, 1);
+            return player.Bounds.IntersectsWith(temp1.Bounds);
         }
 
         public bool Top(Platform platform, Player player)
         {
+
             return player.IsInLine(platform) &&
                    player.Right >= platform.Left + player.Width / 4 && player.Left + player.Width / 4 <= platform.Right;
         }
@@ -42,5 +45,6 @@ namespace Math_MADS
                 prog.isRightMovementAvailable = false;
             }
         }
+       
     }
 }

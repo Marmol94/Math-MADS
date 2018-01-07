@@ -30,20 +30,34 @@ namespace Math_MADS
         Menu levelSelect = new Menu();
         Menu Help = new Menu();
         MenuControl levelSelector = new MenuControl();
+        InteractiveObject boxOne = new InteractiveObject();
+        InteractiveObject boxTwo = new InteractiveObject();
+        InteractiveObject boxThree = new InteractiveObject();
         public bool isRightMovementAvailable, isLeftMovementAvailable, isJumping, wcis, obok1, obok2, obok3;
-        public bool control, podnies1, podnies2, podnies3;
+        public bool control;
+        public List<bool> pickupControl = new List<bool>();
+        public bool podnies1;
+        public bool podnies2;
+        public bool podnies3;
+        List<InteractiveObject> InObLst = new List<InteractiveObject>();
         public int force;
         int i = 0;
-        public const int G = 25;
+        int l = 0;
+        public const int G = 35;
         public int mforce;
         Collision kolizja = new Collision();
-        bool menushow, levelSelectShow, helpShow;
+        bool menuShow, levelSelectShow, helpShow;
         bool lvl1en;
         Menu menutest = new Menu();
 
         public Main()
         {
             for (int k = 0; k <= 16; k++) LevelSelectList.Add(new MenuControl());
+
+            pickupControl.Add(podnies1);
+            pickupControl.Add(podnies2);
+            pickupControl.Add(podnies3);
+
 
             InitializeComponent();
             menu.Hide();
@@ -53,7 +67,7 @@ namespace Math_MADS
             levelOne.Hide();
             Help.Hide();
             levelSelect.Hide();
-            menushow = true;
+            menuShow = true;
             lvl1en = false;
             menutest.InitializeMenu(this);
             Help.InitializeMenu(this);
@@ -61,11 +75,13 @@ namespace Math_MADS
             levelOne.InitializeLevel(this);
             podloga.InitializePlatform(platformX: 10, platformY: 721, platformWidth: 0, platformHeight: 0,
                 isFloor: true, level: levelOne);
-            lvlOneFirstPlatform.InitializePlatform(platformX: 200, platformY: 300, platformWidth: 50,
-                platformHeight: 799, isFloor: false, level: levelOne);
-            lvlOneSecondPlatform.InitializePlatform(platformX: 100, platformY: 150, platformWidth: 150,
+            lvlOneFirstPlatform.InitializePlatform(platformX: 200, platformY: 500, platformWidth: 150,
                 platformHeight: 50, isFloor: false, level: levelOne);
-
+            lvlOneSecondPlatform.InitializePlatform(platformX: 100, platformY: 450, platformWidth: 150,
+                platformHeight: 30, isFloor: false, level: levelOne);
+            boxOne.InitializeObject(110, 100, levelOne, Properties.Resources.Box1, 25, 25);
+            boxTwo.InitializeObject(310, 100, levelOne, Properties.Resources.Box2, 25, 25);
+            boxThree.InitializeObject(210, 100, levelOne, Properties.Resources.Box3, 25, 25);
             optionChooser.InitializeChooser(menutest);
             optionStart.InitializeOption(250, 100, menutest, Properties.Resources.start);
             optionClose.InitializeOption(250, 400, menutest, Properties.Resources.koniec);
@@ -88,137 +104,176 @@ namespace Math_MADS
         {
             gracz1.CheckCollision(kolizja, lvlOneFirstPlatform, this, levelOne);
             gracz1.CheckCollision(kolizja, lvlOneSecondPlatform, this, levelOne);
-            gracz1.FloorCollision(this, kolizja, podloga);
-        }
+            gracz1.CheckCollision(kolizja, podloga, this, levelOne);
+            gracz1.Falling(kolizja, lvlOneSecondPlatform, this, levelOne);
+            gracz1.Falling(kolizja, lvlOneFirstPlatform, this, levelOne);
+            boxOne.FallingObject(kolizja, lvlOneSecondPlatform, this, levelOne);
+            boxOne.FallingObject(kolizja, lvlOneFirstPlatform, this, levelOne);
+            boxOne.FallingObject(kolizja, podloga, this, levelOne);
+            boxOne.PickUp(gracz1, podnies1);
+            boxTwo.FallingObject(kolizja, lvlOneSecondPlatform, this, levelOne);
+            boxTwo.FallingObject(kolizja, lvlOneFirstPlatform, this, levelOne);
+            boxTwo.FallingObject(kolizja, podloga, this, levelOne);
+            boxTwo.PickUp(gracz1, podnies2);
+            boxThree.FallingObject(kolizja, lvlOneSecondPlatform, this, levelOne);
+            boxThree.FallingObject(kolizja, lvlOneFirstPlatform, this, levelOne);
+            boxThree.FallingObject(kolizja, podloga, this, levelOne);
+            boxThree.PickUp(gracz1, podnies3);
+               }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            gracz1.PlayerMovement(this);
+            gracz1.PlayerMovement(this, levelOne, kolizja);
         }
 
         private void Gra_KeyDown(object sender, KeyEventArgs e)
         {
-//           
-            if (e.KeyCode == Keys.Right)
+            switch (e.KeyCode)
             {
-                if (!menushow) isRightMovementAvailable = true;
-                if (levelSelectShow) levelSelector.ChangeControlPositionRight();
-            }
+                case Keys.Right:
 
-            if (e.KeyCode == Keys.Left)
-            {
-                if (!menushow) isLeftMovementAvailable = true;
-                if (levelSelectShow) levelSelector.ChangeControlPositionLeft();
-            }
+                    if (!menuShow) isRightMovementAvailable = true;
+                    if (levelSelectShow) levelSelector.ChangeControlPositionRight();
+                    break;
 
-            if (e.KeyCode == Keys.Escape)
-            {
-                if (menushow && !levelSelectShow & !helpShow) this.Close();
-                else if (levelSelectShow)
-                {
-                    levelSelect.Hide();
-                    menutest.Show();
-                    levelSelectShow = false;
-                    optionChooser.InitializeChooser(menutest);
-                    i = 0;
-                }
-                else if (helpShow)
-                {
-                    Help.Hide();
-                    menutest.Show();
-                    helpShow = false;
-                    optionChooser.InitializeChooser(menutest);
+                case Keys.Left:
 
-                    i = 0;
-                }
-                else
-                {
-                    menutest.Show();
-                    lvl1en = false;
-                    optionChooser.InitializeChooser(menutest);
+                    if (!menuShow) isLeftMovementAvailable = true;
+                    if (levelSelectShow) levelSelector.ChangeControlPositionLeft();
+                    break;
 
-                    levelOne.Hide();
-                    foreach (Control ctrl in levelOne.Controls)
+                case Keys.Escape:
+
+                    if (menuShow && !levelSelectShow & !helpShow) this.Close();
+                    else if (levelSelectShow)
                     {
-                        ctrl.Enabled = false;
+                        levelSelect.Hide();
+                        menutest.Show();
+                        levelSelectShow = false;
+                        optionChooser.InitializeChooser(menutest);
+                        i = 0;
                     }
-
-                    foreach (Control ctrl in menutest.Controls)
+                    else if (helpShow)
                     {
-                        ctrl.Enabled = true;
+                        Help.Hide();
+                        menutest.Show();
+                        helpShow = false;
+                        optionChooser.InitializeChooser(menutest);
+
+                        i = 0;
                     }
+                    else
+                    {
+                        menutest.Show();
+                        lvl1en = false;
+                        optionChooser.InitializeChooser(menutest);
 
-                    menushow = true;
-                }
-            }
-
-            if (!isJumping)
-            {
-                if (e.KeyCode == Keys.Space)
-                {
-                    isJumping = true;
-                    wcis = true;
-                }
-            }
-
-            if (menushow)
-            {
-                if (e.KeyCode == Keys.Up && i >= 1 && i <= 3)
-                {
-                    optionChooser.ChangeControlPositionUp();
-                    if (levelSelectShow) levelSelector.ChangeControlPositionUp();
-
-                    i--;
-                }
-
-                if (e.KeyCode == Keys.Down && i <= 2 && i >= 0)
-                {
-                    i++;
-                    optionChooser.ChangeControlPositionDown();
-                    if (levelSelectShow) levelSelector.ChangeControlPositionDown();
-                }
-            }
-
-            if (e.KeyCode == Keys.Enter)
-            {
-                switch (i)
-                {
-                    case 0:
-                        levelOne.Show();
-                        gracz1.InitializePlayer(x: 0, y: 200, level: levelOne);
-                        levelOne.InitializeLevel(this);
-                        menushow = false;
-                        menutest.Hide();
+                        levelOne.Hide();
                         foreach (Control ctrl in levelOne.Controls)
-                        {
-                            ctrl.Enabled = true;
-                        }
-
-                        foreach (Control ctrl in menutest.Controls)
                         {
                             ctrl.Enabled = false;
                         }
 
-                        lvl1en = true;
-                        menu.Hide();
-                        break;
-                    case 1:
-                        menutest.Hide();
-                        levelSelect.Show();
+                        foreach (Control ctrl in menutest.Controls)
+                        {
+                            ctrl.Enabled = true;
+                        }
+
+                        menuShow = true;
+                    }
+
+                    break;
 
 
-                        i = 0;
-                        levelSelectShow = true;
-                        break;
-                    case 2:
-                        Help.Show();
-                        helpShow = true;
-                        menutest.Hide();
-                        break;
-                    case 3:
-                        this.Close();
-                        break;
+                case Keys.Space:
+                {
+                    if (!isJumping && !wcis)
+                    {
+                        isJumping = true;
+                        wcis = true;
+                        force = G;
+                    }
                 }
+                    break;
+                case Keys.Up:
+                    if (menuShow)
+                    {
+                        if (i >= 1 && i <= 3)
+                        {
+                            optionChooser.ChangeControlPositionUp();
+                            if (levelSelectShow) levelSelector.ChangeControlPositionUp();
+
+                            i--;
+                        }
+                    }
+
+                    break;
+
+                case Keys.Down:
+                    if (menuShow)
+                    {
+                        if (i <= 2 && i >= 0)
+                        {
+                            i++;
+                            optionChooser.ChangeControlPositionDown();
+                            if (levelSelectShow) levelSelector.ChangeControlPositionDown();
+                        }
+                    }
+
+                    break;
+
+                case Keys.Enter:
+
+                    switch (i)
+                    {
+                        case 0:
+                            levelOne.Show();
+                            gracz1.InitializePlayer(x: 0, y: 200, level: levelOne);
+                            levelOne.InitializeLevel(this);
+                            menuShow = false;
+                            menutest.Hide();
+                            foreach (Control ctrl in levelOne.Controls)
+                            {
+                                ctrl.Enabled = true;
+                            }
+
+                            foreach (Control ctrl in menutest.Controls)
+                            {
+                                ctrl.Enabled = false;
+                            }
+
+                            lvl1en = true;
+                            menu.Hide();
+                            break;
+                        case 1:
+                            menutest.Hide();
+                            levelSelect.Show();
+                            i = 0;
+                            levelSelectShow = true;
+                            break;
+                        case 2:
+                            Help.Show();
+                            helpShow = true;
+                            menutest.Hide();
+                            break;
+                        case 3:
+                            if (!levelSelectShow && !helpShow) this.Close();
+                            break;
+                    }
+
+                    break;
+                case Keys.E:
+                    if (podnies1 && podnies2 && podnies3)
+                    {
+                        podnies1 = false;
+                        if (!podnies1)
+                        {
+                            podnies1 = true;
+                        }
+                    }
+                  
+
+                    break;
             }
         }
 
@@ -237,7 +292,6 @@ namespace Math_MADS
 
             if (e.KeyCode == Keys.Space)
             {
-                wcis = false;
             }
         }
     }

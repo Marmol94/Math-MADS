@@ -9,26 +9,25 @@ namespace Math_MADS
 {
     public partial class Player : System.Windows.Forms.PictureBox
     {
+
         public void InitializePlayer(int x, int y, Level level)
         {
-            
             Image = global::Math_MADS.Properties.Resources.przod;
             Size = new System.Drawing.Size(28, 63);
             SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             Location = new System.Drawing.Point(x, y);
             level.Controls.Add(this);
-
         }
 
 
-        public void PlayerMovement(Main prog)
+        public void PlayerMovement(Main prog, Level level, Collision collision)
         {
-            if (prog.isRightMovementAvailable )
+            if (prog.isRightMovementAvailable && this.Right <= level.Width - 3)
             {
                 this.Left += 3;
                 this.Image = Math_MADS.Properties.Resources.prawo;
             }
-            else if (prog.isLeftMovementAvailable)
+            else if (prog.isLeftMovementAvailable && this.Left >= 0)
             {
                 this.Left -= 3;
                 this.Image = Math_MADS.Properties.Resources.lewo;
@@ -41,75 +40,44 @@ namespace Math_MADS
 
         public void CheckCollision(Collision collision, Platform platform, Main main, Level level)
         {
-            if (main.isJumping)
+            if (collision.Top(platform, this))
             {
-                this.Top -= main.force;
-                if (main.wcis && main.mforce < main.force) main.force += 1;
+                this.Top = platform.Top - this.Height;
+                main.wcis = false;
             }
 
-            if (this.Top + this.Height - 5 >= level.Height)
+            else if (main.force > 0)
             {
-                this.Top = level.Top - 5 - this.Height;
-                main.isJumping = false;
-                main.mforce = 15;
-                main.force = Main.G;
-            }
-           
-            else if (collision.Top(platform, this))
-            {
-                main.isJumping = false;
-                main.mforce = 0;
-                main.force = 20;
-                if (!main.wcis) this.Top = platform.Top - this.Height;
-            }
-            else if (collision.Top(platform, this))
-            {
-                main.isJumping = false;
-                main.mforce = 15;
-                main.force = Main.G
-                    ;
-                if (!main.wcis) this.Top = platform.Top - this.Height;
-            }
-            else if (collision.Bot(platform, this))
-            {
-                main.force = 0;
-                this.Top += main.mforce;
-            }
-            else if (!collision.Top(platform, this))
-            {
-                this.Top += main.mforce;
-                if (main.mforce < main.force)
+                if (collision.Bot(platform, this))
                 {
-                    main.mforce = main.mforce + 2;
-                    main.control = true;
-                }
-                else if (main.control)
-                {
-                    main.mforce = 0;
                     main.force = 0;
-                    main.mforce = main.mforce + 1;
-                    main.control = false;
+                    main.wcis = false;
                 }
                 else
                 {
-                    main.mforce = main.mforce + 1;
+                    main.force--;
+                    this.Top -= 4;
                 }
             }
-            collision.SideCollisionMovementEnabler(platform, this, main);
-
-        }
-
-        public void FloorCollision(Main main, Collision collision, Platform platform)
-        {
-            if (collision.Top(platform, this))
+            else
             {
-            
+                main.isJumping = false;
+            }
 
-            main.isJumping = false;
-            main.mforce = 15;
-            main.force = Main.G;
-            if (!main.wcis) this.Top = platform.Top - this.Height;
+           
+
+
+            collision.SideCollisionMovementEnabler(platform, this, main);
         }
-    }
+
+        public void Falling(Collision collision, Platform platform, Main main, Level level)
+        {
+            if (!main.isJumping && this.Location.Y +
+                this.Height < level.Height - 2 && !collision.Top(platform, this))
+            {
+                this.Top += 4;
+            }
+        }
+        
     }
 }
