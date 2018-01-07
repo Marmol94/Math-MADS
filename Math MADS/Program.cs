@@ -16,7 +16,7 @@ namespace Math_MADS
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Prog());
+            Application.Run(new Main());
         }
     }
 }

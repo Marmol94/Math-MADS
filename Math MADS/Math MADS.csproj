@@ -44,35 +44,54 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class1.cs" />
     <Compile Include="Collision.cs" />
+    <Compile Include="Gravity.cs" />
+    <Compile Include="Level.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="LevelSelect.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Menu.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="MenuControl.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="PlayerExtensions.cs" />
-    <Compile Include="Prog.cs">
+    <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Prog.Designer.cs">
-      <DependentUpon>Prog.cs</DependentUpon>
+    <Compile Include="Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Platformy.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Platform.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Player.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Prog.resx">
-      <DependentUpon>Prog.cs</DependentUpon>
+    <EmbeddedResource Include="Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -132,6 +151,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Znak_plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lvl1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\lvl1sel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\select.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Help.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\poziom.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pomoc.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\poziom.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

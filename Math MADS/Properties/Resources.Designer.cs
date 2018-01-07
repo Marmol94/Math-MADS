@@ -17,7 +17,7 @@ namespace Math_MADS.Properties {
     /// </summary>
     // Ta klasa została automatycznie wygenerowana za pomocą klasy StronglyTypedResourceBuilder
     // przez narzędzie, takie jak ResGen lub Visual Studio.
-    // Aby dodać lub usunąć członka, edytuj plik .ResX, a następnie ponownie uruchom ResGen
+    // Aby dodać lub usunąć składową, edytuj plik ResX, a następnie ponownie uruchom narzędzie ResGen
     // z opcją /str lub ponownie utwórz projekt VS.
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "15.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -57,26 +57,6 @@ namespace Math_MADS.Properties {
             }
             set {
                 resourceCulture = value;
-            }
-        }
-        
-        /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap arrow_hi {
-            get {
-                object obj = ResourceManager.GetObject("arrow-hi", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap blue_spiral_galaxy_wallpaper_1024x768 {
-            get {
-                object obj = ResourceManager.GetObject("blue_spiral_galaxy-wallpaper-1024x768", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
             }
         }
         
@@ -153,9 +133,9 @@ namespace Math_MADS.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Galaxy1 {
+        internal static System.Drawing.Bitmap Help {
             get {
-                object obj = ResourceManager.GetObject("Galaxy1", resourceCulture);
+                object obj = ResourceManager.GetObject("Help", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -173,9 +153,9 @@ namespace Math_MADS.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap koniec1 {
+        internal static System.Drawing.Bitmap lewo {
             get {
-                object obj = ResourceManager.GetObject("koniec1", resourceCulture);
+                object obj = ResourceManager.GetObject("lewo", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -183,9 +163,39 @@ namespace Math_MADS.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap lewo {
+        internal static System.Drawing.Bitmap lvl1 {
             get {
-                object obj = ResourceManager.GetObject("lewo", resourceCulture);
+                object obj = ResourceManager.GetObject("lvl1", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap lvl1sel {
+            get {
+                object obj = ResourceManager.GetObject("lvl1sel", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap pomoc {
+            get {
+                object obj = ResourceManager.GetObject("pomoc", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap poziom {
+            get {
+                object obj = ResourceManager.GetObject("poziom", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -213,29 +223,19 @@ namespace Math_MADS.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap select {
+            get {
+                object obj = ResourceManager.GetObject("select", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap start {
             get {
                 object obj = ResourceManager.GetObject("start", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap start1 {
-            get {
-                object obj = ResourceManager.GetObject("start1", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
-        /// </summary>
-        internal static System.Drawing.Bitmap start2 {
-            get {
-                object obj = ResourceManager.GetObject("start2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
