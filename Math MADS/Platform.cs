@@ -33,4 +33,5 @@ namespace Math_MADS
             BackgroundImageLayout = ImageLayout.Tile;
         }
     }
+
 }

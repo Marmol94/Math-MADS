@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -7,29 +8,18 @@ using System.Windows.Forms;
 
 namespace Math_MADS
 {
-    public partial class Player : System.Windows.Forms.PictureBox
+    public partial class Player : Math_MADS.InteractiveObject
     {
-
-        public void InitializePlayer(int x, int y, Level level)
-        {
-            Image = global::Math_MADS.Properties.Resources.przod;
-            Size = new System.Drawing.Size(28, 63);
-            SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            Location = new System.Drawing.Point(x, y);
-            level.Controls.Add(this);
-        }
-
-
         public void PlayerMovement(Main prog, Level level, Collision collision)
         {
-            if (prog.isRightMovementAvailable && this.Right <= level.Width - 3)
+            if (prog.isRightMovementAvailable && this.Right <= level.Width - 3 && prog.isRightKeyPressed)
             {
-                this.Left += 3;
+                this.Left += 5;
                 this.Image = Math_MADS.Properties.Resources.prawo;
             }
-            else if (prog.isLeftMovementAvailable && this.Left >= 0)
+            else if (prog.isLeftMovementAvailable && this.Left >= 0 && prog.isLeftKeyPressed)
             {
-                this.Left -= 3;
+                this.Left -= 5;
                 this.Image = Math_MADS.Properties.Resources.lewo;
             }
             else
@@ -38,12 +28,28 @@ namespace Math_MADS
             }
         }
 
-        public void CheckCollision(Collision collision, Platform platform, Main main, Level level)
+        public void Falling(Collision collision, Platform platform, Main main, Level level)
         {
+            if (!main.isJumping && this.Location.Y +
+                this.Height < level.Height - 2 && !collision.Top(platform, this))
+            {
+                this.Top += 6;
+            }
+        }
+
+        public void InitializePlayer(Level level)
+        {
+           
+            InitializeObject(10, 450, Properties.Resources.przod, 28, 63, level,1);
+        }
+
+        public void CheckCollision(Collision collision, Platform platform, Main main)
+        {
+
             if (collision.Top(platform, this))
             {
-                this.Top = platform.Top - this.Height;
-                main.wcis = false;
+                this.Top = platform.Top - this.Height-7;
+               // main.CanJump = true;
             }
 
             else if (main.force > 0)
@@ -51,12 +57,11 @@ namespace Math_MADS
                 if (collision.Bot(platform, this))
                 {
                     main.force = 0;
-                    main.wcis = false;
                 }
                 else
                 {
                     main.force--;
-                    this.Top -= 4;
+                    this.Top -=6;
                 }
             }
             else
@@ -64,20 +69,18 @@ namespace Math_MADS
                 main.isJumping = false;
             }
 
-           
+            // collision.SideCollisionMovementEnabler(platform,this,main);
 
-
-            collision.SideCollisionMovementEnabler(platform, this, main);
-        }
-
-        public void Falling(Collision collision, Platform platform, Main main, Level level)
-        {
-            if (!main.isJumping && this.Location.Y +
-                this.Height < level.Height - 2 && !collision.Top(platform, this))
+            if (collision.RightCollisionCheck(platform, this, main))
             {
-                this.Top += 4;
+                main.isRightMovementAvailable = false;
             }
+
+            if (collision.LeftCollisionCheck(platform, this, main))
+            {
+                main.isLeftMovementAvailable = false;
+            }
+           
         }
-        
     }
 }

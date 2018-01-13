@@ -13,11 +13,27 @@ namespace Math_MADS
 {
     public partial class Main : Form
     {
-        Platform podloga = new Platform();
-        Platform lvlOneFirstPlatform = new Platform();
-        Platform lvlOneSecondPlatform = new Platform();
+        #region variables
+
+        Platform levelOneFloor = new Platform();
+        Platform levelOneSecondPlatform = new Platform();
+        Platform levelOneFirstPlatform = new Platform();
+        Platform levelTwoFloor = new Platform();
+        Platform levelTwoSecondPlatform = new Platform();
+        Platform levelTwoFirstPlatform = new Platform();
+
+
+        InteractiveObject levelOneLeftEquationChecker = new InteractiveObject();
+        InteractiveObject levelOneRightEquationChecker = new InteractiveObject();
+        InteractiveObject levelTwoLeftEquationChecker = new InteractiveObject();
+        InteractiveObject levelTwoRightEquationChecker = new InteractiveObject();
+
+
         Player gracz1 = new Player();
+        IList<Platform> PlatformList;
         Level levelOne = new Level();
+        Level levelTwo = new Level();
+
         MenuControl optionChooser = new MenuControl();
         MenuControl optionStart = new MenuControl();
         MenuControl optionClose = new MenuControl();
@@ -29,101 +45,198 @@ namespace Math_MADS
         List<MenuControl> LevelSelectList = new List<MenuControl>();
         Menu levelSelect = new Menu();
         Menu Help = new Menu();
+
+
+        int levelOneSolution;
+        int levelTwoSolution;
+
+        private int levelNumber = 1;
+
         MenuControl levelSelector = new MenuControl();
+
+
         InteractiveObject boxOne = new InteractiveObject();
         InteractiveObject boxTwo = new InteractiveObject();
         InteractiveObject boxThree = new InteractiveObject();
-        public bool isRightMovementAvailable, isLeftMovementAvailable, isJumping, wcis, obok1, obok2, obok3;
-        public bool control;
-        public List<bool> pickupControl = new List<bool>();
-        public bool podnies1;
-        public bool podnies2;
-        public bool podnies3;
-        List<InteractiveObject> InObLst = new List<InteractiveObject>();
+        InteractiveObject boxFour = new InteractiveObject();
+        InteractiveObject boxFive = new InteractiveObject();
+        InteractiveObject boSix = new InteractiveObject();
+        InteractiveObject boxSeven = new InteractiveObject();
+        InteractiveObject boxEight = new InteractiveObject();
+        InteractiveObject boxNine = new InteractiveObject();
+
+        InteractiveObject levelOneOperator = new InteractiveObject();
+        InteractiveObject levelOneDoor = new InteractiveObject();
+        InteractiveObject levelTwoOperator = new InteractiveObject();
+        InteractiveObject levelTwoDoor = new InteractiveObject();
+        private int i;
+        Equation equation = new Equation();
+        public bool isRightKeyPressed;
+        public bool isRightMovementAvailable, isLeftMovementAvailable, isJumping, isLeftKeyPressed;
+        List<bool> boxPickUp = new List<bool>();
+
+        private bool isBoxOnePickedUp,
+            isBoxTwoPickedUp,
+            isBoxThreePickedUp,
+            isBoxFourPickedUp,
+            isBoxFivePickedUp,
+            isBoxSixPickedUp,
+            isBoxSevenPickedUp,
+            isBoxEightPickedUp,
+            isBoxNinePickedUp;
+
         public int force;
-        int i = 0;
-        int l = 0;
-        public const int G = 35;
-        public int mforce;
         Collision kolizja = new Collision();
         bool menuShow, levelSelectShow, helpShow;
+
+       
+
         bool lvl1en;
-        Menu menutest = new Menu();
+        Menu menu = new Menu();
+
+        private int test;
+        private bool f;
+
+        #endregion variables
+
 
         public Main()
         {
-            for (int k = 0; k <= 16; k++) LevelSelectList.Add(new MenuControl());
-
-            pickupControl.Add(podnies1);
-            pickupControl.Add(podnies2);
-            pickupControl.Add(podnies3);
-
-
             InitializeComponent();
-            menu.Hide();
-            mforce = 0;
-            force = G;
-            menutest.Show();
+
+
+            for (int k = 0; k <= 16; k++) LevelSelectList.Add(new MenuControl());
+            levelOneTimer.Enabled = false;
+            levelTwoTimer.Enabled = false;
+            //levelOneSolution = -1;
+            isRightMovementAvailable = true;
+            isLeftMovementAvailable = true;
+            PlatformList = new List<Platform>();
+            OldMenu.Hide();
+            menu.Show();
             levelOne.Hide();
             Help.Hide();
             levelSelect.Hide();
             menuShow = true;
             lvl1en = false;
-            menutest.InitializeMenu(this);
+            menu.InitializeMenu(this);
             Help.InitializeMenu(this);
-            gracz1.InitializePlayer(x: 200, y: 10, level: levelOne);
-            levelOne.InitializeLevel(this);
-            podloga.InitializePlatform(platformX: 10, platformY: 721, platformWidth: 0, platformHeight: 0,
-                isFloor: true, level: levelOne);
-            lvlOneFirstPlatform.InitializePlatform(platformX: 200, platformY: 500, platformWidth: 150,
-                platformHeight: 50, isFloor: false, level: levelOne);
-            lvlOneSecondPlatform.InitializePlatform(platformX: 100, platformY: 450, platformWidth: 150,
-                platformHeight: 30, isFloor: false, level: levelOne);
-            boxOne.InitializeObject(110, 100, levelOne, Properties.Resources.Box1, 25, 25);
-            boxTwo.InitializeObject(310, 100, levelOne, Properties.Resources.Box2, 25, 25);
-            boxThree.InitializeObject(210, 100, levelOne, Properties.Resources.Box3, 25, 25);
-            optionChooser.InitializeChooser(menutest);
-            optionStart.InitializeOption(250, 100, menutest, Properties.Resources.start);
-            optionClose.InitializeOption(250, 400, menutest, Properties.Resources.koniec);
-            levelSelector.InitializeOption(100, 0, levelSelect, Properties.Resources.select);
-            optionSelectLevel.InitializeOption(250, 200, menutest, Properties.Resources.poziom);
-            optionHelp.InitializeOption(250, 300, menutest, Properties.Resources.pomoc);
+            gracz1.InitializePlayer(level: levelOne);
+
+            optionChooser.InitializeChooser(menu);
+            optionStart.InitializeOption(250, 100, menu, Properties.Resources.start);
+            optionClose.InitializeOption(250, 400, menu, Properties.Resources.koniec);
+            levelSelector.InitializeOption(100, 210, levelSelect, Properties.Resources.select);
+            optionSelectLevel.InitializeOption(250, 200, menu, Properties.Resources.poziom);
+            optionHelp.InitializeOption(250, 300, menu, Properties.Resources.pomoc);
             helpPage.InitializeOption(0, 0, Help, Properties.Resources.Help);
             helpPage.Size = new System.Drawing.Size(1005, 729);
             levelSelect.InitializeMenu(this);
-            for (int j = 0; j < 4; j++)
+
+
+            for (int f = 0; f <= 4; f++)
+
             {
-                for (int f = 0; f <= 4; f++)
-                    if (j != 4 && f != 4)
-                        LevelSelectList[4 * j + f].InitializeOption(100 + 100 * f, 100 * j, levelSelect,
-                            Properties.Resources.lvl1);
+                LevelSelectList[f].InitializeOption(100 + 100 * f, 210, levelSelect,
+                    Properties.Resources.lvl1);
             }
         }
 
-        private void timer2_Tick(object sender, EventArgs e)
+        private void LevelOneTick(object sender, EventArgs e)
         {
-            gracz1.CheckCollision(kolizja, lvlOneFirstPlatform, this, levelOne);
-            gracz1.CheckCollision(kolizja, lvlOneSecondPlatform, this, levelOne);
-            gracz1.CheckCollision(kolizja, podloga, this, levelOne);
-            gracz1.Falling(kolizja, lvlOneSecondPlatform, this, levelOne);
-            gracz1.Falling(kolizja, lvlOneFirstPlatform, this, levelOne);
-            boxOne.FallingObject(kolizja, lvlOneSecondPlatform, this, levelOne);
-            boxOne.FallingObject(kolizja, lvlOneFirstPlatform, this, levelOne);
-            boxOne.FallingObject(kolizja, podloga, this, levelOne);
-            boxOne.PickUp(gracz1, podnies1);
-            boxTwo.FallingObject(kolizja, lvlOneSecondPlatform, this, levelOne);
-            boxTwo.FallingObject(kolizja, lvlOneFirstPlatform, this, levelOne);
-            boxTwo.FallingObject(kolizja, podloga, this, levelOne);
-            boxTwo.PickUp(gracz1, podnies2);
-            boxThree.FallingObject(kolizja, lvlOneSecondPlatform, this, levelOne);
-            boxThree.FallingObject(kolizja, lvlOneFirstPlatform, this, levelOne);
-            boxThree.FallingObject(kolizja, podloga, this, levelOne);
-            boxThree.PickUp(gracz1, podnies3);
-               }
+            gracz1.CheckCollision(kolizja, levelOneFloor, this);
+            gracz1.CheckCollision(kolizja, levelOneDoor, this);
+            gracz1.CheckCollision(kolizja, levelOneSecondPlatform, this);
+            boxOne.PickUp(gracz1, isBoxOnePickedUp);
+            boxTwo.PickUp(gracz1, isBoxTwoPickedUp);
+            boxThree.PickUp(gracz1, isBoxThreePickedUp);
 
-        private void timer1_Tick(object sender, EventArgs e)
-        {
+
+            gracz1.CheckCollision(kolizja, levelOneFirstPlatform, this);
+            gracz1.FallingObject(kolizja, levelOneSecondPlatform, levelOne);
+            gracz1.FallingObject(kolizja, levelOneFloor, levelOne);
+            gracz1.FallingObject(kolizja, levelOneFirstPlatform, levelOne);
+            boxOne.FallingObject(kolizja, levelOneSecondPlatform, levelOne);
+            boxOne.FallingObject(kolizja, levelOneFirstPlatform, levelOne);
+            boxOne.FallingObject(kolizja, levelOneFloor, levelOne);
+            boxTwo.FallingObject(kolizja, levelOneSecondPlatform, levelOne);
+            boxTwo.FallingObject(kolizja, levelOneFirstPlatform, levelOne);
+            boxTwo.FallingObject(kolizja, levelOneFloor, levelOne);
+            boxThree.FallingObject(kolizja, levelOneSecondPlatform, levelOne);
+            boxThree.FallingObject(kolizja, levelOneFirstPlatform, levelOne);
+            boxThree.FallingObject(kolizja, levelOneFloor, levelOne);
+
             gracz1.PlayerMovement(this, levelOne, kolizja);
+           
+            levelOneSolution = equation.EquationSolve(boxOne, boxThree, levelOneOperator, levelOneLeftEquationChecker,
+                levelOneRightEquationChecker);
+       
+            if (levelOneSolution == levelOneDoor.value)
+            {
+                if (levelOneDoor.Top >= 220)
+                    levelOneDoor.Top -= 5;
+            }
+
+            if (gracz1.Right >= levelOneDoor.Right - 5)
+            {
+                levelOne.Hide();
+                LevelTwoInit();
+                levelNumber++;
+            }
+        }
+
+        private void LevelTwoTick(object sender, EventArgs e)
+        {
+            gracz1.CheckCollision(kolizja, levelTwoFloor, this);
+            gracz1.CheckCollision(kolizja, levelTwoDoor, this);
+            gracz1.CheckCollision(kolizja, levelTwoFirstPlatform, this);
+            gracz1.CheckCollision(kolizja, levelOneSecondPlatform, this);
+
+
+            gracz1.FallingObject(kolizja, levelTwoSecondPlatform, levelTwo);
+            gracz1.FallingObject(kolizja, levelTwoFloor, levelTwo);
+            gracz1.FallingObject(kolizja, levelTwoFirstPlatform, levelTwo);
+
+            boxOne.FallingObject(kolizja, levelTwoSecondPlatform, levelTwo);
+            boxOne.FallingObject(kolizja, levelTwoFirstPlatform, levelTwo);
+            boxOne.FallingObject(kolizja, levelTwoFloor, levelTwo);
+
+            boxTwo.FallingObject(kolizja, levelTwoSecondPlatform, levelTwo);
+            boxTwo.FallingObject(kolizja, levelTwoFirstPlatform, levelTwo);
+            boxTwo.FallingObject(kolizja, levelTwoFloor, levelTwo);
+
+            boxThree.FallingObject(kolizja, levelTwoSecondPlatform, levelTwo);
+            boxThree.FallingObject(kolizja, levelTwoFirstPlatform, levelTwo);
+            boxThree.FallingObject(kolizja, levelTwoFloor, levelTwo);
+
+            gracz1.PlayerMovement(this, levelTwo, kolizja);
+            
+            if (levelTwoSolution == levelTwoDoor.value)
+            {
+                if (levelTwoDoor.Top >= 220)
+                    levelTwoDoor.Top -= 5;
+            }
+
+            if (gracz1.Right >= levelTwoDoor.Right - 5)
+            {
+                levelTwo.Hide();
+                menu.Show();
+            }
+        }
+
+        private void LevelThreeTick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LevelFourTick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void LevelFiveTick(object sender, EventArgs e)
+        {
+
         }
 
         private void Gra_KeyDown(object sender, KeyEventArgs e)
@@ -131,14 +244,25 @@ namespace Math_MADS
             switch (e.KeyCode)
             {
                 case Keys.Right:
+                {
+                    if (!menuShow)
+                    {
+                        isRightKeyPressed = true;
+                       isRightMovementAvailable = true;
+                    }
+                }
 
-                    if (!menuShow) isRightMovementAvailable = true;
                     if (levelSelectShow) levelSelector.ChangeControlPositionRight();
                     break;
 
                 case Keys.Left:
 
-                    if (!menuShow) isLeftMovementAvailable = true;
+                    if (!menuShow)
+                    {
+                        isLeftKeyPressed = true;
+                        isLeftMovementAvailable = true;
+                    }
+
                     if (levelSelectShow) levelSelector.ChangeControlPositionLeft();
                     break;
 
@@ -147,26 +271,27 @@ namespace Math_MADS
                     if (menuShow && !levelSelectShow & !helpShow) this.Close();
                     else if (levelSelectShow)
                     {
+                        levelTwoTimer.Enabled = false;
                         levelSelect.Hide();
-                        menutest.Show();
+                        menu.Show();
                         levelSelectShow = false;
-                        optionChooser.InitializeChooser(menutest);
+                        optionChooser.InitializeChooser(menu);
                         i = 0;
                     }
                     else if (helpShow)
                     {
                         Help.Hide();
-                        menutest.Show();
+                        menu.Show();
                         helpShow = false;
-                        optionChooser.InitializeChooser(menutest);
+                        optionChooser.InitializeChooser(menu);
 
                         i = 0;
                     }
                     else
                     {
-                        menutest.Show();
+                        menu.Show();
                         lvl1en = false;
-                        optionChooser.InitializeChooser(menutest);
+                        optionChooser.InitializeChooser(menu);
 
                         levelOne.Hide();
                         foreach (Control ctrl in levelOne.Controls)
@@ -174,7 +299,7 @@ namespace Math_MADS
                             ctrl.Enabled = false;
                         }
 
-                        foreach (Control ctrl in menutest.Controls)
+                        foreach (Control ctrl in menu.Controls)
                         {
                             ctrl.Enabled = true;
                         }
@@ -187,11 +312,10 @@ namespace Math_MADS
 
                 case Keys.Space:
                 {
-                    if (!isJumping && !wcis)
+                    if (!isJumping)
                     {
                         isJumping = true;
-                        wcis = true;
-                        force = G;
+                        force = 60;
                     }
                 }
                     break;
@@ -201,7 +325,7 @@ namespace Math_MADS
                         if (i >= 1 && i <= 3)
                         {
                             optionChooser.ChangeControlPositionUp();
-                            if (levelSelectShow) levelSelector.ChangeControlPositionUp();
+
 
                             i--;
                         }
@@ -216,7 +340,6 @@ namespace Math_MADS
                         {
                             i++;
                             optionChooser.ChangeControlPositionDown();
-                            if (levelSelectShow) levelSelector.ChangeControlPositionDown();
                         }
                     }
 
@@ -227,26 +350,25 @@ namespace Math_MADS
                     switch (i)
                     {
                         case 0:
-                            levelOne.Show();
-                            gracz1.InitializePlayer(x: 0, y: 200, level: levelOne);
-                            levelOne.InitializeLevel(this);
-                            menuShow = false;
-                            menutest.Hide();
-                            foreach (Control ctrl in levelOne.Controls)
+                            switch (levelNumber)
                             {
-                                ctrl.Enabled = true;
+                                case 1:
+                                    LevelOneInit();
+                                    break;
+                                case 2:
+                                    LevelTwoInit();
+                                    break;
                             }
 
-                            foreach (Control ctrl in menutest.Controls)
-                            {
-                                ctrl.Enabled = false;
-                            }
+                            menuShow = false;
+                            menu.Hide();
+
 
                             lvl1en = true;
-                            menu.Hide();
+                            OldMenu.Hide();
                             break;
                         case 1:
-                            menutest.Hide();
+                            menu.Hide();
                             levelSelect.Show();
                             i = 0;
                             levelSelectShow = true;
@@ -254,7 +376,7 @@ namespace Math_MADS
                         case 2:
                             Help.Show();
                             helpShow = true;
-                            menutest.Hide();
+                            menu.Hide();
                             break;
                         case 3:
                             if (!levelSelectShow && !helpShow) this.Close();
@@ -263,36 +385,162 @@ namespace Math_MADS
 
                     break;
                 case Keys.E:
-                    if (podnies1 && podnies2 && podnies3)
+                    f = isBoxOnePickedUp;
+                    f = isBoxTwoPickedUp;
+                    f = isBoxThreePickedUp;
+
+                    if (boxOne.IsPlayerNextToObject(gracz1))
                     {
-                        podnies1 = false;
-                        if (!podnies1)
+                        if (!isBoxOnePickedUp && !isBoxThreePickedUp && !isBoxTwoPickedUp && !isBoxFourPickedUp && !isBoxFivePickedUp)
                         {
-                            podnies1 = true;
+                            isBoxOnePickedUp = true;
+
+                        }
+                        else
+                        {
+                            isBoxOnePickedUp = false;
                         }
                     }
-                  
+                    else if (boxTwo.IsPlayerNextToObject(gracz1))
+                    {
+                        if (!isBoxOnePickedUp && !isBoxThreePickedUp && !isBoxTwoPickedUp && !isBoxFourPickedUp && !isBoxFivePickedUp)
+                        {
+                            isBoxTwoPickedUp = true;
+                        }
+                        else isBoxTwoPickedUp = false;
+                    }
+                    else if (boxThree.IsPlayerNextToObject(gracz1))
+                    {
+                        if (!isBoxOnePickedUp && !isBoxThreePickedUp && !isBoxTwoPickedUp && !isBoxFourPickedUp && !isBoxFivePickedUp)
+                        {
+                            isBoxThreePickedUp = true;
+
+                        }
+                        else isBoxThreePickedUp = false;
+
+                    }
+                    else if (boxFour.IsPlayerNextToObject(gracz1))
+                    {
+                        if (!isBoxOnePickedUp && !isBoxThreePickedUp && !isBoxTwoPickedUp && !isBoxFourPickedUp && !isBoxFivePickedUp)
+                        {
+                            isBoxFourPickedUp = true;
+                        }
+                        else isBoxFourPickedUp = false;
+                    }
+                    else if (boxFive.IsPlayerNextToObject(gracz1))
+                    {
+                        if (!isBoxOnePickedUp && !isBoxThreePickedUp && !isBoxTwoPickedUp && !isBoxFourPickedUp && !isBoxFivePickedUp)
+                        {
+                            isBoxFivePickedUp = true;
+
+                        }
+                        else isBoxFivePickedUp = false;
+
+                    }
+                    f = isBoxOnePickedUp;
+                    f = isBoxTwoPickedUp;
+                    f = isBoxThreePickedUp;
 
                     break;
             }
         }
 
 
+
         private void Gra_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Right)
             {
-                isRightMovementAvailable = false;
+                isRightKeyPressed = false;
+
+                 isRightMovementAvailable = false;
             }
 
             if (e.KeyCode == Keys.Left)
             {
+                isLeftKeyPressed = false;
                 isLeftMovementAvailable = false;
             }
 
             if (e.KeyCode == Keys.Space)
             {
             }
+        }
+
+        private void LevelOneInit()
+        {
+            levelOne.Show();
+
+            levelTwoTimer.Enabled = true;
+
+            gracz1.InitializePlayer(level: levelOne);
+
+            levelOne.InitializeLevel(this);
+
+            boxOne.InitializeObject(515, 100, Properties.Resources.Box1, 25, 25, levelOne, 6);
+            boxTwo.InitializeObject(100, 100, Properties.Resources.Box2, 25, 25, levelOne, 3);
+            boxThree.InitializeObject(635, 100, Properties.Resources.Box3, 25, 25, levelOne, 3);
+
+            levelOneDoor.InitializeObject(720, 370, Properties.Resources.Drzwi4, 36, 180, levelOne, 2);
+            levelOneOperator.InitializeObject(595, 480, Properties.Resources.Znak_plus, 40, 70, levelOne, 2);
+
+            levelOneFirstPlatform.InitializePlatform(platformX: 300, platformY: 450, platformWidth: 150,
+                platformHeight: 10, isFloor: false, level: levelOne);
+            levelOneFloor.InitializePlatform(platformX: 10, platformY: 721, platformWidth: 0,
+                platformHeight: 0,
+                isFloor: true, level: levelOne);
+            levelOneSecondPlatform.InitializePlatform(platformX: 100, platformY: 450,
+                platformWidth: 150, platformHeight: 70, isFloor: false, level: levelOne);
+
+            levelOneLeftEquationChecker.InitializePlatform(565, 545, 30, 10, false, levelOne);
+            levelOneRightEquationChecker.InitializePlatform(635, 545, 30, 10, false, levelOne);
+            levelOneLeftEquationChecker.BackgroundImage = null;
+            levelOneRightEquationChecker.BackgroundImage = null;
+            levelOneLeftEquationChecker.BackColor = Color.DarkOrange;
+            levelOneRightEquationChecker.BackColor = Color.DarkOrange;
+            levelOneLeftEquationChecker.BringToFront();
+            levelOneRightEquationChecker.BringToFront();
+            levelOneRightEquationChecker.Image = null;
+
+        }
+
+        private void LevelTwoInit()
+        {
+           
+            levelTwo.Show();
+
+            levelOneTimer.Enabled = true;
+
+            gracz1.InitializePlayer(level: levelTwo);
+
+            levelTwo.InitializeLevel(this);
+
+            boxOne.InitializeObject(555, 100, Properties.Resources.Box1, 25, 25, levelTwo, 5);
+            boxTwo.InitializeObject(90, 100, Properties.Resources.Box2, 25, 25, levelTwo, 4);
+            boxThree.InitializeObject(625, 100, Properties.Resources.Box2, 25, 25, levelTwo, 4);
+
+            levelTwoDoor.InitializeObject(720, 370, Properties.Resources.Drzwi4, 36, 180, levelTwo, 1);
+            levelTwoOperator.InitializeObject(585, 480, Properties.Resources.Znak_plus, 40, 70, levelTwo, 1);
+
+
+            levelTwoFirstPlatform.InitializePlatform(platformX: 290, platformY: 450, platformWidth: 150,
+                platformHeight: 10, isFloor: false, level: levelTwo);
+            levelTwoFloor.InitializePlatform(platformX: 10, platformY: 721, platformWidth: 0,
+                platformHeight: 0,
+                isFloor: true, level: levelTwo);
+            levelTwoSecondPlatform.InitializePlatform(platformX: 90, platformY: 450,
+                platformWidth: 150, platformHeight: 70, isFloor: false, level: levelTwo);
+
+
+            levelTwoLeftEquationChecker.InitializePlatform(555, 545, 30, 10, false, levelTwo);
+            levelTwoRightEquationChecker.InitializePlatform(625, 545, 30, 10, false, levelTwo);
+            levelTwoLeftEquationChecker.BackgroundImage = null;
+            levelTwoRightEquationChecker.BackgroundImage = null;
+            levelTwoLeftEquationChecker.BackColor = Color.DarkOrange;
+            levelTwoRightEquationChecker.BackColor = Color.DarkOrange;
+            levelTwoLeftEquationChecker.BringToFront();
+            levelTwoRightEquationChecker.BringToFront();
+
         }
     }
 }

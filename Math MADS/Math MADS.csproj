@@ -45,6 +45,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Collision.cs" />
+    <Compile Include="Equation.cs" />
     <Compile Include="InteractiveObject.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -57,7 +58,7 @@
     <Compile Include="MenuControl.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="PlayerExtensions.cs" />
+    <Compile Include="InteractiveObjectExtensions.cs" />
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>

@@ -12,39 +12,55 @@ namespace Math_MADS
 {
     public partial class Collision
     {
-        const int Grav = 35;
-
-
-        public bool Bot(Platform platform, Player player)
+        public bool Bot(Platform platform, Platform interactiveObject)
         {
-           Platform temp1 = new Platform();
+            Platform temp1 = new Platform();
             temp1.Bounds = platform.Bounds;
             temp1.SetBounds(temp1.Location.X, temp1.Location.Y + temp1.Height, temp1.Width, 1);
-            return player.Bounds.IntersectsWith(temp1.Bounds);
+            return interactiveObject.Bounds.IntersectsWith(temp1.Bounds);
         }
 
-        public bool Top(Platform platform, Player player)
+        public bool Top(Platform platform, Platform interactiveObject)
         {
+  
 
-            return player.IsInLine(platform) &&
-                   player.Right >= platform.Left + player.Width / 4 && player.Left + player.Width / 4 <= platform.Right;
+
+
+
+            return interactiveObject.IsInLine(platform) &&
+                   interactiveObject.Right >= platform.Left +interactiveObject.Width/4 &&
+                   interactiveObject.Left /*+ interactiveObject.Width / 4*/ <= platform.Right;
         }
 
-       
 
-        public void SideCollisionMovementEnabler(Platform platform, Player player, Main prog)
+        public bool RightCollisionCheck(Platform platform, Platform interactiveObject, Main prog)
         {
-            var isSharingVerticalSpace = player.IsBelow(platform) && player.IsAbove(platform);
-            if ((player.Left <= platform.Right && player.Left >= platform.Left && isSharingVerticalSpace))
+            var isSharingVerticalSpace = interactiveObject.IsBelow(platform) && interactiveObject.IsAbove(platform);
+
+
+            return interactiveObject.Right+4 >= platform.Left && interactiveObject.Right <= platform.Right  &&
+                   isSharingVerticalSpace;
+        }
+
+        public bool LeftCollisionCheck(Platform platform, Platform interactiveObject, Main prog)
+        {
+            var isSharingVerticalSpace = interactiveObject.IsBelow(platform) && interactiveObject.IsAbove(platform);
+
+            return interactiveObject.Left-4 <= platform.Right && interactiveObject.Left >= platform.Left &&
+                   isSharingVerticalSpace;
+        }
+        public void SideCollisionMovementEnabler(Platform platform, Platform interactiveObject, Main prog)
+        {
+            var isSharingVerticalSpace = interactiveObject.IsBelow(platform) && interactiveObject.IsAbove(platform);
+            if ((interactiveObject.Left <= platform.Right && interactiveObject.Left >= platform.Left && isSharingVerticalSpace))
             {
                 prog.isLeftMovementAvailable = false;
             }
 
-            if (platform.Left <= player.Right && player.Right <= platform.Right && isSharingVerticalSpace)
+            if (platform.Left <= interactiveObject.Right && interactiveObject.Right <= platform.Right && isSharingVerticalSpace)
             {
                 prog.isRightMovementAvailable = false;
             }
         }
-       
     }
 }

@@ -41,8 +41,8 @@ namespace Math_MADS
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.levelOneTimer = new System.Windows.Forms.Timer(this.components);
+            this.levelTwoTimer = new System.Windows.Forms.Timer(this.components);
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
@@ -56,7 +56,7 @@ namespace Math_MADS
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.menu = new System.Windows.Forms.Panel();
+            this.OldMenu = new System.Windows.Forms.Panel();
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Wybor2 = new System.Windows.Forms.PictureBox();
@@ -71,7 +71,10 @@ namespace Math_MADS
             this.Skrzynka1 = new System.Windows.Forms.PictureBox();
             this.Platform2 = new Math_MADS.Platform();
             this.Platform = new Math_MADS.Platform();
-            this.menu.SuspendLayout();
+            this.levelThreeTimer = new System.Windows.Forms.Timer(this.components);
+            this.levelFourTimer = new System.Windows.Forms.Timer(this.components);
+            this.levelFiveTimer = new System.Windows.Forms.Timer(this.components);
+            this.OldMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.Wybor2)).BeginInit();
@@ -88,17 +91,17 @@ namespace Math_MADS
             ((System.ComponentModel.ISupportInitialize)(this.Platform)).BeginInit();
             this.SuspendLayout();
             // 
-            // timer1
+            // levelOneTimer
             // 
-            this.timer1.Enabled = true;
-            this.timer1.Interval = 1;
-            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
+            this.levelOneTimer.Enabled = true;
+            this.levelOneTimer.Interval = 1;
+            this.levelOneTimer.Tick += new System.EventHandler(this.LevelTwoTick);
             // 
-            // timer2
+            // levelTwoTimer
             // 
-            this.timer2.Enabled = true;
-            this.timer2.Interval = 10;
-            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            this.levelTwoTimer.Enabled = true;
+            this.levelTwoTimer.Interval = 1;
+            this.levelTwoTimer.Tick += new System.EventHandler(this.LevelOneTick);
             // 
             // label13
             // 
@@ -228,27 +231,27 @@ namespace Math_MADS
             this.label1.TabIndex = 2;
             this.label1.Text = "label1";
             // 
-            // menu
+            // OldMenu
             // 
-            this.menu.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.menu.BackColor = System.Drawing.Color.Transparent;
-            this.menu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.menu.Controls.Add(this.pictureBox3);
-            this.menu.Controls.Add(this.pictureBox2);
-            this.menu.Controls.Add(this.Wybor2);
-            this.menu.Controls.Add(this.Wybor1);
-            this.menu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.menu.ForeColor = System.Drawing.Color.Black;
-            this.menu.Location = new System.Drawing.Point(0, 0);
-            this.menu.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.menu.Name = "menu";
-            this.menu.Size = new System.Drawing.Size(754, 586);
-            this.menu.TabIndex = 12;
+            this.OldMenu.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.OldMenu.BackColor = System.Drawing.Color.Transparent;
+            this.OldMenu.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.OldMenu.Controls.Add(this.pictureBox3);
+            this.OldMenu.Controls.Add(this.pictureBox2);
+            this.OldMenu.Controls.Add(this.Wybor2);
+            this.OldMenu.Controls.Add(this.Wybor1);
+            this.OldMenu.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.OldMenu.ForeColor = System.Drawing.Color.Black;
+            this.OldMenu.Location = new System.Drawing.Point(0, 0);
+            this.OldMenu.Margin = new System.Windows.Forms.Padding(2);
+            this.OldMenu.Name = "OldMenu";
+            this.OldMenu.Size = new System.Drawing.Size(754, 586);
+            this.OldMenu.TabIndex = 12;
             // 
             // pictureBox3
             // 
             this.pictureBox3.Location = new System.Drawing.Point(302, 259);
-            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(142, 65);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -258,7 +261,7 @@ namespace Math_MADS
             // pictureBox2
             // 
             this.pictureBox2.Location = new System.Drawing.Point(302, 128);
-            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(142, 64);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -268,7 +271,7 @@ namespace Math_MADS
             // Wybor2
             // 
             this.Wybor2.Location = new System.Drawing.Point(226, 273);
-            this.Wybor2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Wybor2.Margin = new System.Windows.Forms.Padding(2);
             this.Wybor2.Name = "Wybor2";
             this.Wybor2.Size = new System.Drawing.Size(34, 41);
             this.Wybor2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -279,7 +282,7 @@ namespace Math_MADS
             // Wybor1
             // 
             this.Wybor1.Location = new System.Drawing.Point(226, 151);
-            this.Wybor1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Wybor1.Margin = new System.Windows.Forms.Padding(2);
             this.Wybor1.Name = "Wybor1";
             this.Wybor1.Size = new System.Drawing.Size(34, 41);
             this.Wybor1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -385,20 +388,32 @@ namespace Math_MADS
             this.Platform.TabIndex = 1;
             this.Platform.TabStop = false;
             // 
+            // levelThreeTimer
+            // 
+            this.levelThreeTimer.Tick += new System.EventHandler(this.LevelThreeTick);
+            // 
+            // timer2
+            // 
+            this.levelFourTimer.Tick += new System.EventHandler(this.LevelFourTick);
+            // 
+            // timer3
+            // 
+            this.levelFiveTimer.Tick += new System.EventHandler(this.LevelFiveTick);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(754, 586);
-            this.Controls.Add(this.menu);
+            this.Controls.Add(this.OldMenu);
             this.DoubleBuffered = true;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Main";
             this.Text = "Form1";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Gra_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.Gra_KeyUp);
-            this.menu.ResumeLayout(false);
+            this.OldMenu.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.Wybor2)).EndInit();
@@ -418,8 +433,8 @@ namespace Math_MADS
         }
 
         #endregion
-        private System.Windows.Forms.Timer timer1;
-        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Timer levelOneTimer;
+        private System.Windows.Forms.Timer levelTwoTimer;
         //private Panel mainmenu;
         private PictureBox Znak;
         private Platform Platform;
@@ -449,7 +464,10 @@ namespace Math_MADS
         private PictureBox Wybor2;
         private PictureBox pictureBox2;
         private PictureBox pictureBox3;
-        private Panel menu;
+        private Panel OldMenu;
+        private Timer levelThreeTimer;
+        private Timer levelFourTimer;
+        private Timer levelFiveTimer;
     }
 }
 

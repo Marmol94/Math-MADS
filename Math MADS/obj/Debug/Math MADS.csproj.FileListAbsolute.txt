@@ -1,12 +1,3 @@
-G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.csprojResolveAssemblyReference.cache
-G:\Projekty\Math MADS\Math MADS\obj\Debug\Math_MADS.Properties.Resources.resources
-G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.csproj.GenerateResource.Cache
-G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.csproj.CoreCompileInputs.cache
-G:\Projekty\Math MADS\Math MADS\bin\Debug\Math MADS.exe.config
-G:\Projekty\Math MADS\Math MADS\bin\Debug\Math MADS.exe
-G:\Projekty\Math MADS\Math MADS\bin\Debug\Math MADS.pdb
-G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.exe
-G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.pdb
 C:\Projekt\Math MADS\Math MADS\bin\Debug\Math MADS.exe.config
 C:\Projekt\Math MADS\Math MADS\bin\Debug\Math MADS.exe
 C:\Projekt\Math MADS\Math MADS\bin\Debug\Math MADS.pdb
@@ -37,4 +28,13 @@ C:\Users\michm\Documents\GitHub\Math-MADS\Math MADS\obj\Debug\Math MADS.csproj.G
 C:\Users\michm\Documents\GitHub\Math-MADS\Math MADS\obj\Debug\Math MADS.csproj.CoreCompileInputs.cache
 C:\Users\michm\Documents\GitHub\Math-MADS\Math MADS\obj\Debug\Math MADS.exe
 C:\Users\michm\Documents\GitHub\Math-MADS\Math MADS\obj\Debug\Math MADS.pdb
+G:\Projekty\Math MADS\Math MADS\bin\Debug\Math MADS.exe.config
+G:\Projekty\Math MADS\Math MADS\bin\Debug\Math MADS.exe
+G:\Projekty\Math MADS\Math MADS\bin\Debug\Math MADS.pdb
 G:\Projekty\Math MADS\Math MADS\obj\Debug\Math_MADS.Main.resources
+G:\Projekty\Math MADS\Math MADS\obj\Debug\Math_MADS.Properties.Resources.resources
+G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.csproj.GenerateResource.Cache
+G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.csproj.CoreCompileInputs.cache
+G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.exe
+G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.pdb
+G:\Projekty\Math MADS\Math MADS\obj\Debug\Math MADS.csprojResolveAssemblyReference.cache
