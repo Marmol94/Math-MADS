@@ -172,5 +172,38 @@
   <ItemGroup>
     <None Include="Resources\poziom.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Box6.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Box7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Box8.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Box9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Drzwi7.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Drzwi9.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Drzwi18.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Drzwi20.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Znak_dziel.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Znak_minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Znak_mnoz.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

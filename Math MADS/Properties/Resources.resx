@@ -121,35 +121,8 @@
   <data name="lvl1sel" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\lvl1sel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Box4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Box4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lvl1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lvl1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Znak_plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Znak_plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Galaxy" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Galaxy1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="lewo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\lewo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="prawo" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\prawo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Box3" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Box3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="text1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\text1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Box5" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Box5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Box1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Box1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Drzwi4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Drzwi4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="start" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\start2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -157,25 +130,85 @@
   <data name="koniec" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\koniec1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="Box2" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Box2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="Drzwi4" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Drzwi4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="select" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="lvl1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lvl1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="Help" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Help.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="przod" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\przod.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
   <data name="pomoc" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\pomoc.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="przod" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\przod.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Znak_plus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Znak_plus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="prawo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\prawo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Box3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Box3.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="lewo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\lewo.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Box5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Box5.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Box1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Box1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="poziom" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\poziom.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Box2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Box2.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Box4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Box4.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="select" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\select.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="text1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\text1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Galaxy" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Galaxy1.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Box6" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Box6.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Box7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Box7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Box8" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Box8.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Box9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Box9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Drzwi7" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Drzwi7.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Drzwi9" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Drzwi9.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Drzwi18" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Drzwi18.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Drzwi20" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Drzwi20.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Znak_dziel" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Znak_dziel.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Znak_minus" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Znak_minus.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Znak_mnoz" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Znak_mnoz.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

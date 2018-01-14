@@ -27,6 +27,7 @@ namespace Math_MADS
         InteractiveObject levelOneRightEquationChecker = new InteractiveObject();
         InteractiveObject levelTwoLeftEquationChecker = new InteractiveObject();
         InteractiveObject levelTwoRightEquationChecker = new InteractiveObject();
+        InteractiveObject levelTwoMiddleEquationChecker = new InteractiveObject();
 
 
         Player gracz1 = new Player();
@@ -47,9 +48,9 @@ namespace Math_MADS
         Menu Help = new Menu();
 
 
-        int levelOneSolution;
-        int levelTwoSolution;
-
+        InteractiveObject levelOneSolution=new InteractiveObject();
+        InteractiveObject levelTwoFirstSolution=new InteractiveObject();
+        InteractiveObject levelTwoFinalSolution=new InteractiveObject();
         private int levelNumber = 1;
 
         MenuControl levelSelector = new MenuControl();
@@ -67,12 +68,15 @@ namespace Math_MADS
 
         InteractiveObject levelOneOperator = new InteractiveObject();
         InteractiveObject levelOneDoor = new InteractiveObject();
-        InteractiveObject levelTwoOperator = new InteractiveObject();
+        InteractiveObject levelTwoFirstOperator = new InteractiveObject();
+        InteractiveObject levelTwoSecondOperator = new InteractiveObject();
+
         InteractiveObject levelTwoDoor = new InteractiveObject();
         private int i;
         Equation equation = new Equation();
         public bool isRightKeyPressed;
-        public bool isRightMovementAvailable, isLeftMovementAvailable, isJumping, isLeftKeyPressed;
+        public bool isRightMovementAvailable, isLeftMovementAvailable, isJumping, isLeftKeyPressed, isJumpKeyPressed;
+
         List<bool> boxPickUp = new List<bool>();
 
         private bool isBoxOnePickedUp,
@@ -122,7 +126,6 @@ namespace Math_MADS
             menu.InitializeMenu(this);
             Help.InitializeMenu(this);
             gracz1.InitializePlayer(level: levelOne);
-
             optionChooser.InitializeChooser(menu);
             optionStart.InitializeOption(250, 100, menu, Properties.Resources.start);
             optionClose.InitializeOption(250, 400, menu, Properties.Resources.koniec);
@@ -168,10 +171,10 @@ namespace Math_MADS
 
             gracz1.PlayerMovement(this, levelOne, kolizja);
            
-            levelOneSolution = equation.EquationSolve(boxOne, boxThree, levelOneOperator, levelOneLeftEquationChecker,
+            levelOneSolution.value = equation.EquationSolve(boxOne, boxThree, levelOneOperator, levelOneLeftEquationChecker,
                 levelOneRightEquationChecker);
        
-            if (levelOneSolution == levelOneDoor.value)
+            if (levelOneSolution.value == levelOneDoor.value)
             {
                 if (levelOneDoor.Top >= 220)
                     levelOneDoor.Top -= 5;
@@ -180,6 +183,7 @@ namespace Math_MADS
             if (gracz1.Right >= levelOneDoor.Right - 5)
             {
                 levelOne.Hide();
+                levelOneTimer.Enabled = false;
                 LevelTwoInit();
                 levelNumber++;
             }
@@ -189,29 +193,42 @@ namespace Math_MADS
         {
             gracz1.CheckCollision(kolizja, levelTwoFloor, this);
             gracz1.CheckCollision(kolizja, levelTwoDoor, this);
+            gracz1.CheckCollision(kolizja, levelTwoSecondPlatform, this);
+            boxOne.PickUp(gracz1, isBoxOnePickedUp);
+            boxTwo.PickUp(gracz1, isBoxTwoPickedUp);
+            boxThree.PickUp(gracz1, isBoxThreePickedUp);
+
+
             gracz1.CheckCollision(kolizja, levelTwoFirstPlatform, this);
-            gracz1.CheckCollision(kolizja, levelOneSecondPlatform, this);
-
-
             gracz1.FallingObject(kolizja, levelTwoSecondPlatform, levelTwo);
             gracz1.FallingObject(kolizja, levelTwoFloor, levelTwo);
             gracz1.FallingObject(kolizja, levelTwoFirstPlatform, levelTwo);
-
             boxOne.FallingObject(kolizja, levelTwoSecondPlatform, levelTwo);
             boxOne.FallingObject(kolizja, levelTwoFirstPlatform, levelTwo);
             boxOne.FallingObject(kolizja, levelTwoFloor, levelTwo);
-
             boxTwo.FallingObject(kolizja, levelTwoSecondPlatform, levelTwo);
             boxTwo.FallingObject(kolizja, levelTwoFirstPlatform, levelTwo);
             boxTwo.FallingObject(kolizja, levelTwoFloor, levelTwo);
-
             boxThree.FallingObject(kolizja, levelTwoSecondPlatform, levelTwo);
             boxThree.FallingObject(kolizja, levelTwoFirstPlatform, levelTwo);
             boxThree.FallingObject(kolizja, levelTwoFloor, levelTwo);
 
             gracz1.PlayerMovement(this, levelTwo, kolizja);
-            
-            if (levelTwoSolution == levelTwoDoor.value)
+
+
+            test = boxOne.Bottom;
+            test = boxTwo.Bottom;
+            test = levelTwoMiddleEquationChecker.Top;
+            levelTwoFirstSolution.value = equation.EquationSolve(boxOne, boxTwo, levelTwoFirstOperator, levelTwoLeftEquationChecker,
+                levelTwoMiddleEquationChecker);
+           
+            levelTwoFirstSolution.Top = levelTwoMiddleEquationChecker.Top-levelTwoMiddleEquationChecker.Height;
+            levelTwoFirstSolution.Left = levelTwoMiddleEquationChecker.Left;
+            levelTwoFirstSolution.Size = levelTwoMiddleEquationChecker.Size;
+            levelTwoFinalSolution.value = equation.EquationSolve(levelTwoFirstSolution, boxThree,
+                levelTwoSecondOperator, levelTwoMiddleEquationChecker, levelTwoRightEquationChecker);
+
+            if (levelTwoFinalSolution.value == levelTwoDoor.value)
             {
                 if (levelTwoDoor.Top >= 220)
                     levelTwoDoor.Top -= 5;
@@ -220,7 +237,8 @@ namespace Math_MADS
             if (gracz1.Right >= levelTwoDoor.Right - 5)
             {
                 levelTwo.Hide();
-                menu.Show();
+                LevelTwoInit();
+                levelNumber++;
             }
         }
 
@@ -312,9 +330,10 @@ namespace Math_MADS
 
                 case Keys.Space:
                 {
-                    if (!isJumping)
+                    if (!isJumping && !isJumpKeyPressed)
                     {
                         isJumping = true;
+                        isJumpKeyPressed = true;
                         force = 60;
                     }
                 }
@@ -464,6 +483,7 @@ namespace Math_MADS
 
             if (e.KeyCode == Keys.Space)
             {
+                isJumpKeyPressed = false;
             }
         }
 
@@ -471,18 +491,18 @@ namespace Math_MADS
         {
             levelOne.Show();
 
-            levelTwoTimer.Enabled = true;
+            levelOneTimer.Enabled = true;
 
             gracz1.InitializePlayer(level: levelOne);
 
             levelOne.InitializeLevel(this);
 
-            boxOne.InitializeObject(515, 100, Properties.Resources.Box1, 25, 25, levelOne, 6);
-            boxTwo.InitializeObject(100, 100, Properties.Resources.Box2, 25, 25, levelOne, 3);
-            boxThree.InitializeObject(635, 100, Properties.Resources.Box3, 25, 25, levelOne, 3);
+            boxOne.InitializeObject(315, 100, Properties.Resources.Box1, 25, 25, levelOne, 1);
+            boxTwo.InitializeObject(200, 100, Properties.Resources.Box2, 25, 25, levelOne, 2);
+            boxThree.InitializeObject(435, 100, Properties.Resources.Box3, 25, 25, levelOne,3);
 
-            levelOneDoor.InitializeObject(720, 370, Properties.Resources.Drzwi4, 36, 180, levelOne, 2);
-            levelOneOperator.InitializeObject(595, 480, Properties.Resources.Znak_plus, 40, 70, levelOne, 2);
+            levelOneDoor.InitializeObject(720, 370, Properties.Resources.Drzwi4, 36, 180, levelOne, 4);
+            levelOneOperator.InitializeObject(595, 480, Properties.Resources.Znak_plus, 40, 70, levelOne, 0);
 
             levelOneFirstPlatform.InitializePlatform(platformX: 300, platformY: 450, platformWidth: 150,
                 platformHeight: 10, isFloor: false, level: levelOne);
@@ -509,37 +529,46 @@ namespace Math_MADS
            
             levelTwo.Show();
 
-            levelOneTimer.Enabled = true;
+            levelTwoTimer.Enabled = true;
 
             gracz1.InitializePlayer(level: levelTwo);
 
             levelTwo.InitializeLevel(this);
 
-            boxOne.InitializeObject(555, 100, Properties.Resources.Box1, 25, 25, levelTwo, 5);
-            boxTwo.InitializeObject(90, 100, Properties.Resources.Box2, 25, 25, levelTwo, 4);
-            boxThree.InitializeObject(625, 100, Properties.Resources.Box2, 25, 25, levelTwo, 4);
+            boxOne.InitializeObject(420, 100, Properties.Resources.Box7, 25, 25, levelTwo, 7);
+            boxTwo.InitializeObject(90, 400, Properties.Resources.Box3, 25, 25, levelTwo, 3);
+            boxThree.InitializeObject(440, 300, Properties.Resources.Box5, 25, 25, levelTwo, 5);
 
-            levelTwoDoor.InitializeObject(720, 370, Properties.Resources.Drzwi4, 36, 180, levelTwo, 1);
-            levelTwoOperator.InitializeObject(585, 480, Properties.Resources.Znak_plus, 40, 70, levelTwo, 1);
+            levelTwoDoor.InitializeObject(720, 370, Properties.Resources.Drzwi9, 36, 180, levelTwo, 9);
+            levelTwoFirstOperator.InitializeObject(135, 270, Properties.Resources.Znak_minus, 40, 70, levelTwo, 1);
+            levelTwoSecondOperator.InitializeObject(205, 270, Properties.Resources.Znak_plus, 40, 70, levelTwo, 0);
 
 
-            levelTwoFirstPlatform.InitializePlatform(platformX: 290, platformY: 450, platformWidth: 150,
-                platformHeight: 10, isFloor: false, level: levelTwo);
+            levelTwoFirstPlatform.InitializePlatform(platformX: 50, platformY: 340, platformWidth: 250,
+                platformHeight: 20, isFloor: false, level: levelTwo);
             levelTwoFloor.InitializePlatform(platformX: 10, platformY: 721, platformWidth: 0,
                 platformHeight: 0,
                 isFloor: true, level: levelTwo);
-            levelTwoSecondPlatform.InitializePlatform(platformX: 90, platformY: 450,
-                platformWidth: 150, platformHeight: 70, isFloor: false, level: levelTwo);
+            levelTwoSecondPlatform.InitializePlatform(platformX: 390, platformY: 450,
+                platformWidth: 150, platformHeight: 20, isFloor: false, level: levelTwo);
 
 
-            levelTwoLeftEquationChecker.InitializePlatform(555, 545, 30, 10, false, levelTwo);
-            levelTwoRightEquationChecker.InitializePlatform(625, 545, 30, 10, false, levelTwo);
+            levelTwoLeftEquationChecker.InitializePlatform(100, 339, 30, 10, false, levelTwo);
+            levelTwoMiddleEquationChecker.InitializePlatform(170, 339, 30, 10, false, levelTwo);
+            levelTwoRightEquationChecker.InitializePlatform(240, 339, 30, 10, false, levelTwo);
+
             levelTwoLeftEquationChecker.BackgroundImage = null;
+            levelTwoMiddleEquationChecker.BackgroundImage = null;
             levelTwoRightEquationChecker.BackgroundImage = null;
+
             levelTwoLeftEquationChecker.BackColor = Color.DarkOrange;
+            levelTwoMiddleEquationChecker.BackColor = Color.DarkOrange;
             levelTwoRightEquationChecker.BackColor = Color.DarkOrange;
+
             levelTwoLeftEquationChecker.BringToFront();
+            levelTwoMiddleEquationChecker.BringToFront();
             levelTwoRightEquationChecker.BringToFront();
+
 
         }
     }

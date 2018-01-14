@@ -19,8 +19,8 @@ namespace Math_MADS
         
         public bool IsPlayerNextToObject(Player player)
         {
-            return (player.Right >= this.Left - 5 && player.Left <= this.Right) &&
-            (player.Bottom <= this.Bottom + 15 && player.Bottom >= this.Bottom - 15);
+            return (player.Right >= this.Left - 5 && player.Left <= this.Right+5) &&
+            (player.Bottom <= this.Bottom + 30 && player.Bottom >= this.Bottom - 30);
         }
 
         public void PickUp(Player player, bool pickedUp)

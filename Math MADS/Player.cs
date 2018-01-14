@@ -49,14 +49,17 @@ namespace Math_MADS
             if (collision.Top(platform, this))
             {
                 this.Top = platform.Top - this.Height-7;
-               // main.CanJump = true;
+                main.isJumping = false;
+
             }
 
-            else if (main.force > 0)
+            if (main.force > 0)
             {
                 if (collision.Bot(platform, this))
                 {
                     main.force = 0;
+                    main.isJumping = false;
+
                 }
                 else
                 {
@@ -66,7 +69,7 @@ namespace Math_MADS
             }
             else
             {
-                main.isJumping = false;
+               // main.isJumping = false;
             }
 
             // collision.SideCollisionMovementEnabler(platform,this,main);

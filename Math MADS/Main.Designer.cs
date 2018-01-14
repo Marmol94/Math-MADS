@@ -57,6 +57,9 @@ namespace Math_MADS
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.OldMenu = new System.Windows.Forms.Panel();
+            this.levelThreeTimer = new System.Windows.Forms.Timer(this.components);
+            this.levelFourTimer = new System.Windows.Forms.Timer(this.components);
+            this.levelFiveTimer = new System.Windows.Forms.Timer(this.components);
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.Wybor2 = new System.Windows.Forms.PictureBox();
@@ -71,9 +74,6 @@ namespace Math_MADS
             this.Skrzynka1 = new System.Windows.Forms.PictureBox();
             this.Platform2 = new Math_MADS.Platform();
             this.Platform = new Math_MADS.Platform();
-            this.levelThreeTimer = new System.Windows.Forms.Timer(this.components);
-            this.levelFourTimer = new System.Windows.Forms.Timer(this.components);
-            this.levelFiveTimer = new System.Windows.Forms.Timer(this.components);
             this.OldMenu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -95,13 +95,13 @@ namespace Math_MADS
             // 
             this.levelOneTimer.Enabled = true;
             this.levelOneTimer.Interval = 1;
-            this.levelOneTimer.Tick += new System.EventHandler(this.LevelTwoTick);
+            this.levelOneTimer.Tick += new System.EventHandler(this.LevelOneTick);
             // 
             // levelTwoTimer
             // 
             this.levelTwoTimer.Enabled = true;
             this.levelTwoTimer.Interval = 1;
-            this.levelTwoTimer.Tick += new System.EventHandler(this.LevelOneTick);
+            this.levelTwoTimer.Tick += new System.EventHandler(this.LevelTwoTick);
             // 
             // label13
             // 
@@ -248,6 +248,18 @@ namespace Math_MADS
             this.OldMenu.Size = new System.Drawing.Size(754, 586);
             this.OldMenu.TabIndex = 12;
             // 
+            // levelThreeTimer
+            // 
+            this.levelThreeTimer.Tick += new System.EventHandler(this.LevelThreeTick);
+            // 
+            // levelFourTimer
+            // 
+            this.levelFourTimer.Tick += new System.EventHandler(this.LevelFourTick);
+            // 
+            // levelFiveTimer
+            // 
+            this.levelFiveTimer.Tick += new System.EventHandler(this.LevelFiveTick);
+            // 
             // pictureBox3
             // 
             this.pictureBox3.Location = new System.Drawing.Point(302, 259);
@@ -260,6 +272,7 @@ namespace Math_MADS
             // 
             // pictureBox2
             // 
+            this.pictureBox2.Image = global::Math_MADS.Properties.Resources.Znak_mnoz;
             this.pictureBox2.Location = new System.Drawing.Point(302, 128);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(2);
             this.pictureBox2.Name = "pictureBox2";
@@ -388,18 +401,6 @@ namespace Math_MADS
             this.Platform.TabIndex = 1;
             this.Platform.TabStop = false;
             // 
-            // levelThreeTimer
-            // 
-            this.levelThreeTimer.Tick += new System.EventHandler(this.LevelThreeTick);
-            // 
-            // timer2
-            // 
-            this.levelFourTimer.Tick += new System.EventHandler(this.LevelFourTick);
-            // 
-            // timer3
-            // 
-            this.levelFiveTimer.Tick += new System.EventHandler(this.LevelFiveTick);
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -408,6 +409,7 @@ namespace Math_MADS
             this.ClientSize = new System.Drawing.Size(754, 586);
             this.Controls.Add(this.OldMenu);
             this.DoubleBuffered = true;
+            this.ForeColor = System.Drawing.Color.Coral;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Main";
             this.Text = "Form1";
