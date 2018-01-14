@@ -10,8 +10,22 @@ using System.Windows.Forms;
 
 namespace Math_MADS
 {
+    /// <summary>
+    /// Klasa platform
+    /// </summary>
     public partial class Platform :System.Windows.Forms.PictureBox
     {
+        /// <summary>
+        /// Metoda inicjalizacji platformy o określonych parametrach
+        ///Gdy isFloor=true, program generuje platformę o określonych parametrach, która odpowiada za podłogę na poziomie 
+        ///
+        /// </summary>
+        /// <param name="platformX">Lewa współrzędna platformy</param>
+        /// <param name="platformY">Górna współrzędna platformy</param>
+        /// <param name="platformWidth">Szerokość platformy</param>
+        /// <param name="platformHeight">Wysokość platformy</param>
+        /// <param name="isFloor">czy platforma jest podloga</param>
+        /// <param name="level">poziom</param>
         public void InitializePlatform(int platformX, int platformY,int platformWidth,int platformHeight, bool isFloor, Level level)
         {
 

@@ -110,12 +110,6 @@
     <None Include="Resources\przod.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\blue_spiral_galaxy-wallpaper-1024x768.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\arrow-hi.png" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\start2.png" />
   </ItemGroup>
   <ItemGroup>
@@ -123,9 +117,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Galaxy.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\Galaxy1.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\text1.png" />
@@ -204,6 +195,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Znak_mnoz.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\lvl2.png" />
+    <Content Include="Resources\lvl3.png" />
+    <Content Include="Resources\lvl4.png" />
+    <Content Include="Resources\lvl5.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

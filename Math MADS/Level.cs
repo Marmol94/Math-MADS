@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace Math_MADS
 {
+    /// <summary>
+    /// Klasa poziomów
+    /// </summary>
     public class Level:System.Windows.Forms.Panel
     {
+        /// <summary>
+        /// Inicjalizacja poziomu
+        /// </summary>
+        /// <param name="main">program</param>
         public void InitializeLevel(Main main)
         {
             
@@ -20,11 +27,6 @@ namespace Math_MADS
             Location = new System.Drawing.Point(0, 0);
             Margin = new System.Windows.Forms.Padding(0);
             Size = new System.Drawing.Size(1005, 721);
-        }
-
-        public bool WasFinishedBefore(bool finish)
-        {
-            return finish;
         }
     }
 }
